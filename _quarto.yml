@@ -11,8 +11,9 @@ website:
     left:
       - text: Admin
         menu:
-          - pages/admin/overview.qmd
-          - pages/admin/assessments.qmd
+          - pages/admin/01_overview.qmd
+          - pages/admin/02_assessments.qmd
+          - pages/admin/03_zulip_forum.qmd
     right:
       - text: Kapitel
         menu:
