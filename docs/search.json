@@ -4,21 +4,42 @@
     "href": "index.html",
     "title": "Neurowissenschaft Computerlab",
     "section": "",
-    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Frühjahrssemester 2022"
   },
   {
-    "objectID": "pages/admin/assessments.html",
-    "href": "pages/admin/assessments.html",
+    "objectID": "pages/admin/02_assessments.html",
+    "href": "pages/admin/02_assessments.html",
     "title": "Leistungskontrollen",
     "section": "",
-    "text": "About this site"
+    "text": "Der Zweck dieser Übungen ist, das Gelernte selber anzuwenden, oder dies zumindest zu versuchen. Es gibt für viele dieser Übungen nicht eine definitive, richtige Antwort - es geht vor allem darum, es selber zu versuchen. Bei einzureichenden Übungen gibt es die Möglichkeit, diese falls nötig (nach Verbesserung) ein zweites Mal einzureichen.\nDie Übungen sollen jeweils in dem entsprechenden Ordner auf ILIAS hochgeladen werden, und zwar in Form eines R Scripts, oder als Rmarkdown File.\nILIAS (Vormittag) 👉 468703-FS2022-0\nILIAS (Nachmittag) 👉 468703-FS2022-1\n\nEin gute Einführung in Rmarkdown finden Sie z.B. hier.\n\nFalls mehrere Files abgegeben werden, sollte unbedingt alles in einem ZIP File komprimiert werden. Sie können auch eine Word/Libreoffice Datei abgeben; bitte fügen Sie aber keinen R Code in ein Word Dokument ein.\n\n\n\nReusehttps://creativecommons.org/licenses/by/4.0/CitationBibTeX citation:@online{ellis,\n  author = {Andrew Ellis},\n  title = {Leistungskontrollen},\n  url = {https://kogpsy.github.io/neuroscicomplab_fs22_quarto//pages/admin/02_assessments.html},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nAndrew Ellis. n.d. “Leistungskontrollen.” https://kogpsy.github.io/neuroscicomplab_fs22_quarto//pages/admin/02_assessments.html."
   },
   {
-    "objectID": "pages/admin/overview.html",
-    "href": "pages/admin/overview.html",
+    "objectID": "pages/admin/03_zulip_forum.html",
+    "href": "pages/admin/03_zulip_forum.html",
+    "title": "Zulip Forum",
+    "section": "",
+    "text": "Zulip ist besser geeignet, um Code darzustellen.\nWir benutzen dasselbe Forum für die Vormittags- und Nachmittagsveranstaltungen.\nDie Diskussion ist für alle Teilnehmer*innen sichtbar.\nDiskussion kann in Echtzeit (synchron) oder offline (asynchron) stattfinden.\n\nBitte erstellen Sie unter diesem Link einen Account. Sie müssen dafür Ihre Uni Emailadresse verwenden. Account erstellen 👉 zulipchat.com/join/hyuinbg3mtcumccnzt3tpsqb/\n Wenn Sie einen Account erstellt haben, können Sie sich unter folgendem Link einloggen. Zulip Forum 👉 neuroscicomplab2022.zulipchat.com\nAusserdem ist Zulip als Desktop oder Mobile App für alle gängigen Betriebssysteme erhältlich. Apps 👉 zulip.com/apps\n\n\n\nReusehttps://creativecommons.org/licenses/by/4.0/CitationBibTeX citation:@online{ellis,\n  author = {Andrew Ellis},\n  title = {Zulip {Forum}},\n  url = {https://kogpsy.github.io/neuroscicomplab_fs22_quarto//pages/admin/03_zulip_forum.html},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nAndrew Ellis. n.d. “Zulip Forum.” https://kogpsy.github.io/neuroscicomplab_fs22_quarto//pages/admin/03_zulip_forum.html."
+  },
+  {
+    "objectID": "pages/admin/01_overview.html",
+    "href": "pages/admin/01_overview.html",
     "title": "Übersicht",
     "section": "",
-    "text": "In diesem Kurs geht es um…"
+    "text": "In diesem Kurs beschäftigen wir uns im weiteren Sinne mit Model-based Cognitive Neuroscience. Dieses Forschungsgebiet existiert noch nicht sehr lange, und ist aus dem Zusammenschluss von mathematischer Modellierung und neurowissenschaftlichen Methoden entstanden.\nWir widmen uns dem behavioralen/kognitiven Teil dieses Forschungsgebiets. Das bedeutet, wir analysieren Daten aus Verhaltensexperimenten — sowohl mit herkömmlichen statistischen Verfahren, als auch mit mathematischen Modellen. Die Resultate dieser Analysen können wiederum in der Analyse bildgebender Verfahren oder EEG benutzt werden.\n\nEs gibt ein sehr gutes Lehrbuch (Forstmann and Wagenmakers 2015) zum Thema Model-based Cognitive Neuroscience; wir werden einzelne Themen daraus aufgreifen. Das Buch ist auf SpringerLink verfügbar: An Introduction to Model-Based Cognitive Neuroscience.\n\nWir werden folgende Themen im Laufe des Semester behandeln:\n\nErstellen von behavioralen Experimenten\nImportieren und Bearbeiten von Daten (z.B. binäre Daten, Reaktionszeiten)\nGraphische Darstellung und explorative Datenanalyse\nAuswahl von statistischen Verfahren\nEinführung in die Bayesianische Datenanalyse\nAnalyse messwiederholter Daten anhand von Multilevel Modellen\nKognitive Prozessmodelle (mathematische Modelle von Entscheidungsverhalten)"
+  },
+  {
+    "objectID": "pages/admin/01_overview.html#experimente",
+    "href": "pages/admin/01_overview.html#experimente",
+    "title": "Übersicht",
+    "section": "Experimente",
+    "text": "Experimente\nUm ein Experiment zu kreieren benutzen wir PsychoPy. PsychoPy ist ein Python-basiertes Tool, mit dem sich sowohl in einer grafischen Benutzeroberfläche (GUI) als auch mit Python Code Experimente programmieren lassen."
+  },
+  {
+    "objectID": "pages/admin/01_overview.html#datenanalyse",
+    "href": "pages/admin/01_overview.html#datenanalyse",
+    "title": "Übersicht",
+    "section": "Datenanalyse",
+    "text": "Datenanalyse\nUm Daten zu verarbeiten (data cleaning), grafisch darzustellen und zu analysieren werden wir R verwenden. Sie sollten daher die aktuelle Version von R installieren (Version 4.1.3), sowie RStudio.\nR 👉 https://cloud.r-project.org/\nRStudio 👉 https://www.rstudio.com/products/rstudio/download/#download\nFür Bayesianische Datenanalyse verwenden wir ausserdem JASP und Stan. JASP ist ein GUI Programm, ähnlich wie Jamovi, mit dem sich simple Bayesianische Tests durchführen lassen.\nJASP 👉 https://jasp-stats.org/download/\nStan ist eine probabilistische Programmiersprache, welche wir von R aus benutzen. Die dafür benötigte Software werden wir im Verlauf des Semesters installieren."
   },
   {
     "objectID": "pages/chapters/03_data_cleaning.html",
