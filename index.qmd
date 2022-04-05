@@ -1,5 +1,5 @@
 ---
-title: "quarto_neurosci_complab_fs22"
+title: "Neurowissenschaft Computerlab"
 ---
 
 This is a Quarto website.
