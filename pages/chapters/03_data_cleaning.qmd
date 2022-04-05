@@ -32,8 +32,6 @@ theme_set(theme_grey(base_size = 14) +
             theme(panel.grid = element_blank()))
 ```
 
-# Data Cleaning
-
 Nun wollen wir versuchen, einzelne Trials, zu identifizieren, in denen Versuchpersonen nicht aufgepasst haben, oder einfach geraten wurde.  
 
 Am häufigsten werden die folgenden beiden Kriterien verwendet, um entweder einzelne Datenpunkte, oder Versuchspersonen, auszuschliessen:
@@ -47,7 +45,7 @@ Nun ist in Experimenten, in denen ein Bias erzeugt wird, etwas heikel, Trials od
 Deswegen richten wir hier unseren Fokus auf die Reaktionszeiten. Wir gehen davon aus, dass Reaktionszeiten, die zu schnell oder yu langsam waren, aufgrund von Rateprozessen zustande kamen. Was genau __zu schnell__ oder __zu langsam__ heisst, ist schwierig zu beantworten, und hängt stark vom jeweiligen Task ab.
 Deshalb ist es wichtig, sich _a priori_ Gedanken darüber zu machen, welche Kriterien angewandt werden sollen.
 
-## Reaktionszeiten
+# Reaktionszeiten
 
 Drei häufig verwendete Tasks, um Reaktionszeiten zu messen sind 
 
@@ -91,7 +89,7 @@ tibble(norm = rnorm(1e4, 1, 0.4),
 
 Obwohl die Normalverteilung so aussieht, als könne sie Reaktionszeiten repräsentieren, ist der Wertebereich von $[-\Inf, \Inf]$ nicht dafür geeignet. Ausserdem erlaubt die Normalverteilung keine extremen Werte, und ist nicht asymmetrisch.
 
-## Daten aus einem Reaktionszeitexperiment
+# Daten aus einem Reaktionszeitexperiment
   
 Wir untersuchen nun Daten aus einem Online-Experiement mit 3 Blöcken. In jedem Block mussten Versuchspersonen einen anderen Task ausführen. Unser Ziel ist es, Datenpunkte zu identfizieren, welche wir eventuell ausschliessen müssen.
 
@@ -168,7 +166,7 @@ df |>
 
 Wir können versuchen Ausreisser zu identifizieren.
 
-## Cleaning by subject
+# Cleaning by subject
 
 Unser Ziel ist es, die Daten einer Versuchsperson zu entfernen, falls diese Person in einer experimentellen Bedingung eine mittlere RT hat, welche mehr als 2 Standardabweichungen vom Gesamtmittelwert liegt.
 
@@ -230,7 +228,7 @@ mentalchronometry_cleaned <- mentalchronometry |>
   mutate(subj = fct_drop(subj))
 ```
 
-## Cleaning by trial
+# Cleaning by trial
 
 Nun wollen alle Trials identifizieren, welche mehr als 2 Standardabweichungen vom Bedingungs-Gesamtmittelwert liegen. Ausserdem entfernen wir alle RTs, welche unter 100 Millisekunden liegen.
 
