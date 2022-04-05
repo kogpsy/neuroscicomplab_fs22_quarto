@@ -8,11 +8,14 @@
 }
 
 .quarto-description {
-  margin-bottom: 30px !important;
+  margin-bottom: 40px !important;
 }
 
 .quarto-title-meta {
-  margin-bottom: 10px !important;
+  margin-bottom: 30px !important;
+  border-radius: 0.25rem;
+  padding-left: 0.4em;
+  padding-bottom: 0.4em;
 }
 
 .navbar-brand img {
