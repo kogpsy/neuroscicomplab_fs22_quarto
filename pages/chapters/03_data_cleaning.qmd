@@ -10,8 +10,7 @@ author:
     affiliation-url: https://www.kog.psy.unibe.ch
     orcid: 0000-0002-2788-936X
 license: CC BY
-citation: 
-    url: https://kogpsy.github.io/neuroscicomplab/data-cleaning.html
+citation: true
 bibliography: ../../bibliography.bib
 format:
     html:
@@ -207,7 +206,6 @@ Wir haben also eine Person, welche in einer Bedingung (`discrimination`) eine mi
 
 Weiter können wir die RT für jeden Trial in jeder Bedingung plotten. Es ist klar, dass die mittlere RT im `discrimination` aufgrund mehrerer Ausreisser zustande kommt.
 
-
 ```{r}
 mentalchronometry |> 
   semi_join(sum_stats_participants |> filter(outlier_P == 1), 
@@ -218,7 +216,6 @@ mentalchronometry |>
 ```
 
 Wir könnten diese Person ganz ausschliessen.
-
 
 ```{r}
 excluded <- sum_stats_participants |> 
@@ -232,7 +229,6 @@ mentalchronometry_cleaned <- mentalchronometry |>
   filter(!(subj %in% excluded$subj)) |> 
   mutate(subj = fct_drop(subj))
 ```
-
 
 ## Cleaning by trial
 
@@ -281,8 +277,6 @@ mentalchronometry_cleaned <- mentalchronometry_cleaned |>
   filter(trial_type == "OK")
 ```
 
-
-
 ```{r}
 mentalchronometry_cleaned |> 
   ggplot(aes(x = RT, color = block, fill = block)) +
@@ -290,7 +284,5 @@ mentalchronometry_cleaned |>
   scale_fill_viridis(discrete=TRUE, option="cividis") +
   scale_color_viridis(discrete=TRUE, option="cividis")
 ```
-
-
 
 Data Cleaning ist zwar in den meisten Fällen notwendig,  aber leider etwas willkürlich, und gibt dem Forscher/der Forscherin sehr viele Freiheiten (researcher degrees of freedom). Es ist deshlab wichtig, Ausschlusskriterien für Personen und einzelne Trials vor der Analyse festzulegen, und offen zu berichten.

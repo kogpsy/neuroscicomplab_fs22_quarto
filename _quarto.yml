@@ -4,7 +4,9 @@ project:
 
 website:
   title: "Neurowissenschaft Computerlab"
+  site-url: https://kogpsy.github.io/neuroscicomplab_fs22_quarto/
   navbar:
+    logo: /assets/logo.png
     background: primary
     left:
       - text: Admin
@@ -19,9 +21,11 @@ website:
     left: "© Copyright 2022, Andrew Ellis"
     right:
       - icon: github
-        href: https://github.com/
+        href: https://github.com/kogpsy/neuroscicomplab_fs22_quarto
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme:
+      light: [flatly, styles/light.scss]
+      dark: [darkly, styles/dark.scss]
+    css: /styles/global.css
