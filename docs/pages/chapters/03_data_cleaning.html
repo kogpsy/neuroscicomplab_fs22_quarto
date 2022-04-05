@@ -200,14 +200,13 @@
         <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link active" data-scroll-target="#data-cleaning">Data Cleaning</a>
+<li><a href="#reaktionszeiten" id="toc-reaktionszeiten" class="nav-link active" data-scroll-target="#reaktionszeiten">Reaktionszeiten</a>
 <ul class="collapse">
-<li><a href="#reaktionszeiten" id="toc-reaktionszeiten" class="nav-link" data-scroll-target="#reaktionszeiten">Reaktionszeiten</a></li>
 <li><a href="#eigenschaften-von-reaktionszeiten" id="toc-eigenschaften-von-reaktionszeiten" class="nav-link" data-scroll-target="#eigenschaften-von-reaktionszeiten">Eigenschaften von Reaktionszeiten</a></li>
+</ul></li>
 <li><a href="#daten-aus-einem-reaktionszeitexperiment" id="toc-daten-aus-einem-reaktionszeitexperiment" class="nav-link" data-scroll-target="#daten-aus-einem-reaktionszeitexperiment">Daten aus einem Reaktionszeitexperiment</a></li>
 <li><a href="#cleaning-by-subject" id="toc-cleaning-by-subject" class="nav-link" data-scroll-target="#cleaning-by-subject">Cleaning by subject</a></li>
 <li><a href="#cleaning-by-trial" id="toc-cleaning-by-trial" class="nav-link" data-scroll-target="#cleaning-by-trial">Cleaning by trial</a></li>
-</ul></li>
 </ul>
 </nav>
     </div>
@@ -244,8 +243,6 @@ Note
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_grey</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="data-cleaning" class="level1 page-columns page-full">
-<h1>Data Cleaning</h1>
 <p>Nun wollen wir versuchen, einzelne Trials, zu identifizieren, in denen Versuchpersonen nicht aufgepasst haben, oder einfach geraten wurde.</p>
 <p>Am häufigsten werden die folgenden beiden Kriterien verwendet, um entweder einzelne Datenpunkte, oder Versuchspersonen, auszuschliessen:</p>
 <ol type="1">
@@ -254,8 +251,8 @@ Note
 </ol>
 <p>Nun ist in Experimenten, in denen ein Bias erzeugt wird, etwas heikel, Trials oder Versuchspersonen aufgrund der Anzahl korrekter Antworten auszuschliessen - wir haben ja die Korrektheit der Antworten experimentell manipuliert.</p>
 <p>Deswegen richten wir hier unseren Fokus auf die Reaktionszeiten. Wir gehen davon aus, dass Reaktionszeiten, die zu schnell oder yu langsam waren, aufgrund von Rateprozessen zustande kamen. Was genau <strong>zu schnell</strong> oder <strong>zu langsam</strong> heisst, ist schwierig zu beantworten, und hängt stark vom jeweiligen Task ab. Deshalb ist es wichtig, sich <em>a priori</em> Gedanken darüber zu machen, welche Kriterien angewandt werden sollen.</p>
-<section id="reaktionszeiten" class="level2">
-<h2 class="anchored" data-anchor-id="reaktionszeiten">Reaktionszeiten</h2>
+<section id="reaktionszeiten" class="level1 page-columns page-full">
+<h1>Reaktionszeiten</h1>
 <p>Drei häufig verwendete Tasks, um Reaktionszeiten zu messen sind</p>
 <ul>
 <li>Reaction tasks</li>
@@ -264,7 +261,6 @@ Note
 </ul>
 <p>Bei <em>Reaction tasks</em> muss auf einen Reiz reagiert werden, bei Go/No Go tasks muss zwischen zwei Reizen unterschieden, und nur auf einen reagiert werden. Discrimination tasks erfordern komplexere kognitive Leistungen, da eine von zwei Antworten gegeben werden muss, in Abhängigkeit des Reizes.</p>
 <p>Wenn wir Reaktionszeiten messen, gehen wir gehen davon aus, dass die Zeit, die benötigt wird, um einen Task auszuführen, uns über den kognitiven Prozess Auskunft gibt. Dabei ist es aber wichtig, dass die Versuchsperson in dieser Zeit wirklich genau den Task ausführt, und nicht nebenher noch andere Prozesse die Reaktionszeit beeinflussen, da diese sonst bedeutungslos wäre. Leider ist dies nicht immer der Fall. Bei vielen repetitiven Tasks sind <em>attentional lapses</em> nicht zu vermeiden, und nur bei den einfachsten Tasks ist es möglich, sicherzustellen, dass die VP auch wirklich den intendierten Task ausführt.</p>
-</section>
 <section id="eigenschaften-von-reaktionszeiten" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="eigenschaften-von-reaktionszeiten">Eigenschaften von Reaktionszeiten</h2>
 <p>Die wichtigsten Merkmale von Reaktionszeiten sind</p>
@@ -285,8 +281,9 @@ Eine LogNormal-Verteilung bedeutet, dass der Logarithmus einer Zufallsvariablen 
 </div>
 <p>Obwohl die Normalverteilung so aussieht, als könne sie Reaktionszeiten repräsentieren, ist der Wertebereich von <span class="math inline">\([-\Inf, \Inf]\)</span> nicht dafür geeignet. Ausserdem erlaubt die Normalverteilung keine extremen Werte, und ist nicht asymmetrisch.</p>
 </section>
-<section id="daten-aus-einem-reaktionszeitexperiment" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="daten-aus-einem-reaktionszeitexperiment">Daten aus einem Reaktionszeitexperiment</h2>
+</section>
+<section id="daten-aus-einem-reaktionszeitexperiment" class="level1 page-columns page-full">
+<h1>Daten aus einem Reaktionszeitexperiment</h1>
 <p>Wir untersuchen nun Daten aus einem Online-Experiement mit 3 Blöcken. In jedem Block mussten Versuchspersonen einen anderen Task ausführen. Unser Ziel ist es, Datenpunkte zu identfizieren, welche wir eventuell ausschliessen müssen.</p>
 <p>Die drei Tasks sind:</p>
 <ol type="1">
@@ -385,8 +382,8 @@ $ gender       &lt;fct&gt; female, female, female, female, female, female, femal
 </div>
 <p>Wir können versuchen Ausreisser zu identifizieren.</p>
 </section>
-<section id="cleaning-by-subject" class="level2">
-<h2 class="anchored" data-anchor-id="cleaning-by-subject">Cleaning by subject</h2>
+<section id="cleaning-by-subject" class="level1">
+<h1>Cleaning by subject</h1>
 <p>Unser Ziel ist es, die Daten einer Versuchsperson zu entfernen, falls diese Person in einer experimentellen Bedingung eine mittlere RT hat, welche mehr als 2 Standardabweichungen vom Gesamtmittelwert liegt.</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary stats (means) for participants</span></span>
@@ -455,8 +452,8 @@ $ gender       &lt;fct&gt; female, female, female, female, female, female, femal
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">subj =</span> <span class="fu">fct_drop</span>(subj))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="cleaning-by-trial" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="cleaning-by-trial">Cleaning by trial</h2>
+<section id="cleaning-by-trial" class="level1 page-columns page-full">
+<h1>Cleaning by trial</h1>
 <p>Nun wollen alle Trials identifizieren, welche mehr als 2 Standardabweichungen vom Bedingungs-Gesamtmittelwert liegen. Ausserdem entfernen wir alle RTs, welche unter 100 Millisekunden liegen.</p>
 <div class="cell">
 <div class="sourceCode" id="cb16"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mark individual trials as outliers</span></span>
@@ -526,7 +523,6 @@ $ gender       &lt;fct&gt; female, female, female, female, female, female, femal
 
 
 
-</section>
 </section>
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
 <div id="ref-wagenmakersLinearRelationMean2007" class="csl-entry" role="doc-biblioentry">
