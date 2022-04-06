@@ -17,7 +17,7 @@ format:
 ---
 
 ```{r}
-#| cache: false
+#| include: false
 
 knitr::opts_knit$set(root.dir = '../../data/rdk_decision_experiment')
 ```
