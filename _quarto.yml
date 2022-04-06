@@ -20,6 +20,7 @@ website:
           - pages/chapters/01_psychopy_experiments.qmd
           - pages/chapters/02_importing_data.qmd
           - pages/chapters/03_data_cleaning.qmd
+          - pages/chapters/04_summarizing_data.qmd
   page-footer:
     left: "© Copyright 2022, Andrew Ellis"
     right:
