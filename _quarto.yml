@@ -17,6 +17,7 @@ website:
     right:
       - text: Kapitel
         menu:
+          - pages/chapters/01_psychopy_experiments.qmd
           - pages/chapters/03_data_cleaning.qmd
   page-footer:
     left: "© Copyright 2022, Andrew Ellis"
