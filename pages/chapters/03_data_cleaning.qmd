@@ -15,6 +15,7 @@ bibliography: ../../bibliography.bib
 format:
     html:
         toc: true
+        code-link: true
 ---
 
 :::{.callout-note}
