@@ -2,22 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/index.html</loc>
-    <lastmod>2022-04-05T15:17:30.889Z</lastmod>
+    <lastmod>2022-04-06T14:09:38.012Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/admin/02_assessments.html</loc>
-    <lastmod>2022-04-05T15:17:31.639Z</lastmod>
+    <lastmod>2022-04-06T14:09:38.546Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/admin/03_zulip_forum.html</loc>
-    <lastmod>2022-04-05T15:17:32.170Z</lastmod>
+    <lastmod>2022-04-06T14:09:39.018Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/admin/01_overview.html</loc>
-    <lastmod>2022-04-05T15:17:33.950Z</lastmod>
+    <lastmod>2022-04-06T14:09:40.110Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/chapters/02_importing_data.html</loc>
+    <lastmod>2022-04-06T14:09:47.930Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/chapters/01_psychopy_experiments.html</loc>
+    <lastmod>2022-04-06T14:09:48.649Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/chapters/03_data_cleaning.html</loc>
-    <lastmod>2022-04-05T15:17:41.619Z</lastmod>
+    <lastmod>2022-04-06T14:09:56.187Z</lastmod>
   </url>
 </urlset>
