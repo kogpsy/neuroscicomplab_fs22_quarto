@@ -18,7 +18,7 @@ format:
 ---
 
 :::{.callout-note}
-👉 [R Code für dieses Kapitel downloaden](./files/data-cleaning.R)
+👉 [R Code für dieses Kapitel downloaden](../../downloadable_files/data-cleaning.R)
 :::
 
 ```{r}
