@@ -21,6 +21,7 @@ website:
           - pages/chapters/02_importing_data.qmd
           - pages/chapters/03_data_cleaning.qmd
           - pages/chapters/04_summarizing_data.qmd
+          - pages/chapters/05_signal_detection_i.qmd
   page-footer:
     left: "© Copyright 2022, Andrew Ellis"
     right:
