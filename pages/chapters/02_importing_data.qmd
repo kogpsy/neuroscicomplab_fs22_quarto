@@ -47,7 +47,7 @@ library(tidyverse)
 ```
  
 <aside>
-In Ihrem Rstudio Projekt ist dieses File im Ordner `testdata` gespeichert (Hier in einem Ordner names `data/rdktest`). Bitte passen Sie den Pfad dementsprechend an, oder verwenden Sie den COde aus dem R Script im RStudio Projekt.
+In Ihrem Rstudio Projekt ist dieses File im Ordner `testdata` gespeichert (Hier in einem Ordner names `data/rdktest`). Bitte passen Sie den Pfad dementsprechend an, oder verwenden Sie den Code aus dem R Script im RStudio Projekt.
 </aside>
 
 ## CSV File importieren
