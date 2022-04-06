@@ -317,8 +317,7 @@ data <- data |>
 An dieser Stelle speichern wir den neu kreierten Datensatz als `.csv` File. Somit können wir die Daten einfach importieren, ohne die ganzen Schritte wiederholen zu müssen.
 
 ```{r}
-#| eval: false
-data |> write_csv(file = "data/rdkdata.csv")
+data |> write_csv(file = "final/rdkdata.csv")
 ```
 
 ```{r}
