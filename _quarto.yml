@@ -31,6 +31,9 @@ website:
           - pages/exercises/exercise_02.qmd
           - pages/exercises/exercise_03.qmd
           - pages/exercises/exercise_04.qmd
+      - text: Lösungen
+        menu:
+          - pages/solutions/solution_03.qmd
   page-footer:
     left: "© Copyright 2022, Andrew Ellis"
     right:
