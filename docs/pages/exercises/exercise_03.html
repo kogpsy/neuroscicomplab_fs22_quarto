@@ -5,9 +5,8 @@
 <meta name="generator" content="quarto-0.9.233">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Andrew Ellis">
-<meta name="dcterms.date" content="2022-04-12">
-<meta name="description" content="Anwendungen.">
-<title>Neurowissenschaft Computerlab - Reaktionszeiten: II</title>
+<meta name="description" content="Daten importieren und bereinigen.">
+<title>Neurowissenschaft Computerlab - Übung 3</title>
 <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -78,25 +77,6 @@
     code span.va { color: #19177c; } /* Variable */
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-    }
-    .hanging div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }
   </style>
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script><script src="../../site_libs/quarto-nav/headroom.min.js"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script><meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><script src="../../site_libs/quarto-html/quarto.js"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
@@ -237,19 +217,24 @@
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc"><h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#hierarchical-shift-function" id="toc-hierarchical-shift-function" class="nav-link active" data-scroll-target="#hierarchical-shift-function">Hierarchical Shift Function</a></li>
+<li>
+<a href="#aufgabenstellung" id="toc-aufgabenstellung" class="nav-link active" data-scroll-target="#aufgabenstellung">Aufgabenstellung</a>
+<ul class="collapse">
+<li><a href="#aufgaben" id="toc-aufgaben" class="nav-link" data-scroll-target="#aufgaben">Aufgaben</a></li>
+</ul>
+</li>
 </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default">
 
 
-<div class="quarto-title"><h1 class="title display-7">Reaktionszeiten: II</h1><div class="quarto-description"><p>Anwendungen.
+<div class="quarto-title"><h1 class="title display-7">Übung 3</h1><div class="quarto-description"><p>Daten importieren und bereinigen.
 </p></div></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><div><a href="https://github.com/awellis">
 <p>Andrew Ellis</p>
 </a><a class="quarto-title-author-orcid" href="https://orcid.org/0000-0002-2788-936X"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></div></div></div></div><div><div class="quarto-title-meta-heading">Affilliation</div><div class="quarto-title-meta-contents"><div class="quarto-title-affiliations"><p><a href="https://www.kog.psy.unibe.ch">
 <p>Kognitive Psychologie, Wahrnehmung und Methodenlehre, Universität Bern</p>
-</a></p></div></div></div><div><div class="quarto-title-meta-heading">Published</div><div class="quarto-title-meta-contents"><p class="date">April 12, 2022</p></div></div></div></header><div class="callout-note callout callout-style-default callout-captioned">
+</a></p></div></div></div><div><div class="quarto-title-meta-heading">Published</div><div class="quarto-title-meta-contents"><p class="date">March 18, 2022</p></div></div></div></header><div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -259,66 +244,56 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>👉 <a href="../../downloadable_files/response-times-2.R">R Code für dieses Kapitel downloaden</a></p>
+<p>Die Aufgaben, die Sie bearbeiten sollen, finden Sie in einem gelben Kasten. Optionale Aufgaben sind in orangen Kästen.</p>
+<p>In diesem File finden Sie Beispielscode. Manche Zeilen enthalten <code>___</code>. Hier müssen Sie den Code vervollständigen.</p>
+<p>Laden Sie bitte Ihre Lösung als ZIP File bis <strong>Freitag, 25.03.2022, um 00:00 Uhr</strong>, in den Order für Übung 3 auf ILIAS. Das ZIP File sollte ein R Skript enthalten, sowie den bereinigten Datensatz.</p>
+<p>Nennen Sie Ihr File <em>Matrikelnummer_Nachname_uebung-3.zip</em>.</p>
 </div>
 </div>
-<section id="hierarchical-shift-function" class="level1"><h1>Hierarchical Shift Function</h1>
-<p>Wir schauen uns Daten aus einem Lexical Decision Task <span class="citation" data-cites="wagenmakersLinearRelationMean2007">(<a href="#ref-wagenmakersLinearRelationMean2007" role="doc-biblioref">Wagenmakers and Brown 2007</a>)</span> an, bei dem Versuchspersonen Wörter als entweder <code>word</code> oder <code>non-word</code> klassifizieren mussten. Es ist bekannt, dass Wörter welche häufiger vorkommen schneller klassifiziert werden können, als seltene Wörter. In diesem Experiment mussten Versuchspersonen diesen Task unter zwei Bedingungen durchführen. In der <code>speed</code> Bedingung mussten sie sich so schnell wie möglich entscheiden, in der <code>accuracy</code> Bedingung mit so wenig Fehler wie möglich.</p>
-<p>Hier untersuchen wir also den Unterschied in der Reaktionszeit zwischen zwei “within” Bedingungen. Die Daten befinden sich im Package <code>rtdists</code>, welches zuerst installiert werden sollte.</p>
+<section id="aufgabenstellung" class="level1"><h1>Aufgabenstellung</h1>
+<p>In dieser Aufgabe bearbeiten Sie Daten aus einem Detektionssexperiment. Versuchspersonen mussten in zwei Bedingungen (<code>bias</code> und <code>no_bias</code>) ein Signal, welches in Rauschen eingebettet war, detektieren. Im Datensatz sind folgende Variablen:</p>
+<pre><code>subject: Subjekt ID
+trial_num: Trialnummer, durchnummeriert in jeder Bedingung
+condition: Bedingung (_Bias_ und _No Bias_)
+signal_present: Indikatorvariable für Signal (0: absent, 1: present)
+correct: Indikatorvariable für korrekte Antwort (0: incorrekt, 1: correct)
+rt: Reaktionszeit in Sekunden
+</code></pre>
+<section id="aufgaben" class="level2"><h2 class="anchored" data-anchor-id="aufgaben">Aufgaben</h2>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Aufgabe 1</strong></p>
+<ol type="a">
+<li><p>Speichern Sie das <em>CSV</em> File in Ihren Projektordner.</p></li>
+<li><p>Lesen Sie das <em>CSV</em> File ein. Per Konvention verwenden wir den Variablennamen <code>d</code> für den Datensatz.</p></li>
+<li><p>Überprüfen Sie, ob alle Variablen vorhanden sind. Verwenden Sie z.B. die Funktion <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code>.</p></li>
+<li><p>Konvertieren Sie die Gruppierungsvariablen <code>subject</code> und <code>condition</code> zu Faktoren.</p></li>
+</ol>
+</div>
+</div>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rtdists/rtdists/">rtdists</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://sjmgarnier.github.io/viridis/">viridis</a></span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">speed_acc</span><span class="op">)</span> 
-
-<span class="va">speed_acc</span> <span class="op">&lt;-</span> <span class="va">speed_acc</span> |&gt;
-  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span>
-
-
-<span class="va">df_speed_acc</span> <span class="op">&lt;-</span> <span class="va">speed_acc</span> |&gt; 
-   <span class="co"># zwischen 180 ms and 3000 ms</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">rt</span> <span class="op">&gt;</span> <span class="fl">0.18</span>, <span class="va">rt</span> <span class="op">&lt;</span> <span class="fl">3</span><span class="op">)</span> |&gt; 
-   <span class="co"># zu Character konvertieren (damit filter funktioniert)</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">stim_cat</span>, <span class="va">response</span><span class="op">)</span>, <span class="va">as.character</span><span class="op">)</span><span class="op">)</span> |&gt; 
-  <span class="co"># Korrekte Antworten</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">response</span> <span class="op">!=</span> <span class="st">'error'</span>, <span class="va">stim_cat</span> <span class="op">==</span> <span class="va">response</span><span class="op">)</span> |&gt; 
-  <span class="co"># wieder zu Factor konvertieren</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">stim_cat</span>, <span class="va">response</span><span class="op">)</span>, <span class="va">as_factor</span><span class="op">)</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">df_speed_acc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code># A tibble: 27,936 × 9
-   id    block condition stim  stim_cat frequency   response    rt censor
-   &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt;       &lt;fct&gt;    &lt;dbl&gt; &lt;lgl&gt; 
- 1 1     1     speed     5015  nonword  nw_low      nonword  0.7   FALSE 
- 2 1     1     speed     6481  nonword  nw_very_low nonword  0.46  FALSE 
- 3 1     1     speed     3305  word     very_low    word     0.455 FALSE 
- 4 1     1     speed     4468  nonword  nw_high     nonword  0.773 FALSE 
- 5 1     1     speed     1047  word     high        word     0.39  FALSE 
- 6 1     1     speed     5036  nonword  nw_low      nonword  0.603 FALSE 
- 7 1     1     speed     1111  word     high        word     0.435 FALSE 
- 8 1     1     speed     6561  nonword  nw_very_low nonword  0.524 FALSE 
- 9 1     1     speed     1670  word     high        word     0.427 FALSE 
-10 1     1     speed     6207  nonword  nw_very_low nonword  0.456 FALSE 
-# … with 27,926 more rows</code></pre>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"___"</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>Wir schauen uns vier Versuchspersonen grafisch an:</p>
+<p>Schauen Sie sich die Variablen an:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">data_plot</span> <span class="op">&lt;-</span> <span class="va">df_speed_acc</span> |&gt; 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">8</span>, <span class="fl">11</span>, <span class="fl">15</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">data_plot</span> |&gt; 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">condition</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, bins <span class="op">=</span> <span class="fl">60</span><span class="op">)</span> <span class="op">+</span> 
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">id</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1.6</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html">scale_fill_viridis</a></span><span class="op">(</span>discrete <span class="op">=</span> <span class="cn">TRUE</span>, option <span class="op">=</span> <span class="st">"E"</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="08_response_times_ii_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Konvertieren Sie die Gruppierungsvariablen zu Faktoren:</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">___ =</span> <span class="fu">as_factor</span>(___),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">___ =</span> <span class="fu">as_factor</span>(___))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -330,8 +305,49 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Schauen Sie sich alle Vpn an.</p>
+<p><strong>Aufgabe 2</strong></p>
+<p>Gibt es Versuchspersonen die in einer der Bedingungen Reaktionszeiten hat, welche mehr als zwei Standardabweichungen <strong>über</strong> dem Bedingungsmittelwert liegen?</p>
 </div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary stats (means) for subjects/conditions</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sum_stats_participants <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(___, ___) <span class="sc">|&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">mean_P =</span> <span class="fu">mean</span>(___))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary stats (means and SDs) for conditions</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sum_stats_conditions <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(___) <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">mean_C =</span> <span class="fu">mean</span>(__),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">sd_C =</span> <span class="fu">sd</span>(___))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sum_stats_participants <span class="ot">&lt;-</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">full_join</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        sum_stats_participants,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        sum_stats_conditions,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">by =</span> <span class="st">"condition"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">outlier_P =</span> ___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="co"># show outlier participants</span>
+<span class="va">sum_stats_participants</span> |&gt;
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">outlier_P</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> |&gt;
+    <span class="fu">show</span><span class="op">(</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">excluded</span> <span class="op">&lt;-</span> <span class="va">sum_stats_participants</span> |&gt;
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">outlier_P</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span>
+
+<span class="va">excluded</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">d_cleaned</span> <span class="op">&lt;-</span> <span class="va">d</span> |&gt;
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">subject</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">excluded</span><span class="op">$</span><span class="va">subject</span><span class="op">)</span><span class="op">)</span> |&gt;
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>subject <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_drop.html">fct_drop</a></span><span class="op">(</span><span class="va">subject</span><span class="op">)</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -343,77 +359,78 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Was würden Sie anhand der Histogramme erwarten?</p>
+<p><strong>Aufgabe 3</strong></p>
+<ol type="a">
+<li><p>Gibt es einzelne Trials, in denen Versuchpersonen länger als 4 Standardabweichungen über dem Bedingungsmittelwert gebraucht haben, um zu Antworten?</p></li>
+<li><p>Gibt es einzelne Trials, in denen Versuchpersonen zu schnell (unter 100 ms) geantwortet haben?</p></li>
+<li><p>Speichern Sie den bearbeiteten Datensatz als <em>CSV</em> File.</p></li>
+</ol>
 </div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>d_cleaned <span class="ot">&lt;-</span> d_cleaned <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">full_join</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        sum_stats_conditions,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">by =</span> <span class="st">"condition"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">trial_type =</span> <span class="fu">case_when</span>(</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>            ___ <span class="sc">&gt;</span> ___ <span class="sc">~</span> <span class="st">"too slow"</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>            ___ <span class="sc">&lt;</span> ___ <span class="sc">~</span> <span class="st">"too fast"</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>            <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"OK"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>            <span class="fu">factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"OK"</span>, <span class="st">"too fast"</span>, <span class="st">"too slow"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">d_cleaned</span> |&gt;
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">trial_num</span>, y <span class="op">=</span> <span class="va">rt</span>, color <span class="op">=</span> <span class="va">trial_type</span>, shape <span class="op">=</span> <span class="va">trial_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span><span class="op">(</span><span class="op">~</span><span class="va">condition</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gray70"</span>, <span class="st">"red"</span>, <span class="st">"steelblue"</span><span class="op">)</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">d_cleaned</span> |&gt;
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">trial_type</span> <span class="op">!=</span> <span class="st">"OK"</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">d_cleaned</span> <span class="op">&lt;-</span> <span class="va">d_cleaned</span> |&gt;
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">trial_type</span> <span class="op">==</span> <span class="st">"OK"</span><span class="op">)</span> |&gt;
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">trial_num</span>, <span class="va">condition</span>, <span class="va">signal_present</span>, <span class="va">correct</span>, <span class="va">rt</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">d_cleaned</span> |&gt;
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">trial_num</span>, y <span class="op">=</span> <span class="va">rt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span><span class="op">(</span><span class="op">~</span><span class="va">condition</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gray70"</span>, <span class="st">"red"</span>, <span class="st">"steelblue"</span><span class="op">)</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>d_cleaned <span class="sc">|&gt;</span> <span class="fu">write_csv</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Note
+Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Berechnen Sie nun die Differenzen der Dezile zwischen den Bedingungen für jede Versuchsperson.</p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">out_speed_acc</span> <span class="op">&lt;-</span> <span class="fu">rogme</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rogme/man/hsf_pb.html">hsf_pb</a></span><span class="op">(</span><span class="va">df_speed_acc</span>, <span class="va">rt</span> <span class="op">~</span> <span class="va">condition</span> <span class="op">+</span> <span class="va">id</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">p_speed_acc</span> <span class="op">&lt;-</span> <span class="fu">rogme</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rogme/man/plot_hsf_pb.html">plot_hsf_pb</a></span><span class="op">(</span><span class="va">out_speed_acc</span>, interv <span class="op">=</span> <span class="st">"ci"</span><span class="op">)</span>
-<span class="va">p_speed_acc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="08_response_times_ii_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>In dieser Grafik sehen wir auf der X-Achse die Dezile der <code>accuracy</code> Bedingung und auf der Y-Achse die Differenz <code>accuracy - speed</code>. Die Differenz ist bei jedem Dezil positiv und scheint steig grösser zu werden. Die <code>accuracy</code> Bedingung führt also zu längeren und variableren Reaktionszeiten. Die Bedingungen unterscheiden sich im Median, aber wenn wir nur das berücksichtigt hätten, würden wir verpassen, dass sich die Verteilungen sehr stark am rechten Ende der Verteilung unterscheiden.</p>
-<p>Zum Vergleich berechnen wir noch Bedingungsmittelwerte der Median Reaktionszeiten.</p>
-<div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">by_subject</span> <span class="op">&lt;-</span> <span class="va">df_speed_acc</span> |&gt; 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">condition</span><span class="op">)</span> |&gt; 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">rt</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">agg</span> <span class="op">&lt;-</span> <span class="fu">Rmisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Rmisc/man/summarySEwithin.html">summarySEwithin</a></span><span class="op">(</span><span class="va">by_subject</span>,
-                       measurevar <span class="op">=</span> <span class="st">"mean"</span>,
-                       withinvars <span class="op">=</span> <span class="st">"condition"</span>,
-                       idvar <span class="op">=</span> <span class="st">"id"</span>,
-                       na.rm <span class="op">=</span> <span class="cn">FALSE</span>,
-                       conf.interval <span class="op">=</span> <span class="fl">.95</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">agg</span> |&gt; 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">condition</span>, <span class="va">mean</span>, fill <span class="op">=</span> <span class="va">condition</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>, linetype <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span>   
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_errorbar</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">mean</span><span class="op">-</span><span class="va">se</span>, ymax <span class="op">=</span> <span class="va">mean</span><span class="op">+</span><span class="va">se</span><span class="op">)</span>,
-                width <span class="op">=</span> <span class="fl">0.1</span>, size<span class="op">=</span><span class="fl">1</span>, color<span class="op">=</span><span class="st">"black"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html">scale_fill_viridis</a></span><span class="op">(</span>discrete<span class="op">=</span><span class="cn">TRUE</span>, option<span class="op">=</span><span class="st">"cividis"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="08_response_times_ii_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<p><strong>Optionale Aufgabe</strong></p>
+<p>Die Aufgaben oben bieten lediglich Voschläge, wie man “Ausreisser” identifizieren könnte. Wenn Sie andere Voschläge haben, können Sie den Code anpassen, oder selber Code schreiben. Können Sie Ihr Vorgehen begründen?</p>
 </div>
 </div>
 
 
 
-
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-wagenmakersLinearRelationMean2007" class="csl-entry" role="doc-biblioentry">
-Wagenmakers, Eric-Jan, and Scott Brown. 2007. <span>“On the Linear Relation Between the Mean and the Standard Deviation of a Response Time Distribution.”</span> <em>Psychological Review</em> 114 (3): 830–41. <a href="https://doi.org/10.1037/0033-295X.114.3.830">https://doi.org/10.1037/0033-295X.114.3.830</a>.
-</div>
-</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{ellis2022,
+</section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{ellis2022,
   author = {Andrew Ellis},
-  title = {Reaktionszeiten: {II}},
-  date = {2022-04-12},
-  url = {https://kogpsy.github.io/neuroscicomplab_fs22_quarto//pages/chapters/08_response_times_ii.html},
+  title = {Übung 3},
+  date = {03/18/2022},
+  url = {https://kogpsy.github.io/neuroscicomplab_fs22_quarto//pages/exercises/exercise_03.html},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-ellis2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
-Andrew Ellis. 2022. <span>“Reaktionszeiten: II.”</span> April 12, 2022.
-<a href="https://kogpsy.github.io/neuroscicomplab_fs22_quarto//pages/chapters/08_response_times_ii.html">https://kogpsy.github.io/neuroscicomplab_fs22_quarto//pages/chapters/08_response_times_ii.html</a>.
+Andrew Ellis. 3AD–18AD. <span>“Übung 3.”</span> 3AD–18AD. <a href="https://kogpsy.github.io/neuroscicomplab_fs22_quarto//pages/exercises/exercise_03.html">https://kogpsy.github.io/neuroscicomplab_fs22_quarto//pages/exercises/exercise_03.html</a>.
 </div></div></section></div></main><!-- /main --><script type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const disableStylesheet = (stylesheets) => {
