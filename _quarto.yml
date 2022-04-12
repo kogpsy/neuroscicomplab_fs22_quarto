@@ -23,6 +23,8 @@ website:
           - pages/chapters/04_summarizing_data.qmd
           - pages/chapters/05_signal_detection_i.qmd
           - pages/chapters/06_signal_detection_ii.qmd
+          - pages/chapters/07_response_times_i.qmd
+          - pages/chapters/08_response_times_ii.qmd
   page-footer:
     left: "© Copyright 2022, Andrew Ellis"
     right:
