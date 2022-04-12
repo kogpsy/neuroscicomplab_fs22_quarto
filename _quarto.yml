@@ -5,6 +5,7 @@ project:
 website:
   title: "Neurowissenschaft Computerlab"
   site-url: https://kogpsy.github.io/neuroscicomplab_fs22_quarto/
+  favicon: /assets/logo_landing.png
   navbar:
     logo: /assets/logo.png
     background: primary
