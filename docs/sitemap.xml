@@ -2,38 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/index.html</loc>
-    <lastmod>2022-04-06T16:00:56.218Z</lastmod>
+    <lastmod>2022-04-12T10:03:22.103Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/admin/02_assessments.html</loc>
-    <lastmod>2022-04-06T16:00:56.760Z</lastmod>
+    <lastmod>2022-04-12T10:03:22.603Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/admin/03_zulip_forum.html</loc>
-    <lastmod>2022-04-06T16:00:57.225Z</lastmod>
+    <lastmod>2022-04-12T10:03:23.049Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/admin/01_overview.html</loc>
-    <lastmod>2022-04-06T16:00:58.365Z</lastmod>
+    <lastmod>2022-04-12T10:03:24.019Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/chapters/02_importing_data.html</loc>
-    <lastmod>2022-04-06T16:01:09.594Z</lastmod>
+    <lastmod>2022-04-12T10:03:37.448Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/chapters/06_signal_detection_ii.html</loc>
+    <lastmod>2022-04-12T10:03:45.094Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/chapters/07_response_times_i.html</loc>
+    <lastmod>2022-04-12T10:03:54.447Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/chapters/04_summarizing_data.html</loc>
-    <lastmod>2022-04-06T16:01:24.314Z</lastmod>
+    <lastmod>2022-04-12T10:04:07.434Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/chapters/01_psychopy_experiments.html</loc>
-    <lastmod>2022-04-06T16:01:24.976Z</lastmod>
+    <lastmod>2022-04-12T10:04:08.096Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/chapters/05_signal_detection_i.html</loc>
-    <lastmod>2022-04-06T16:01:35.199Z</lastmod>
+    <lastmod>2022-04-12T10:04:18.076Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/chapters/08_response_times_ii.html</loc>
+    <lastmod>2022-04-12T10:04:34.680Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/chapters/03_data_cleaning.html</loc>
-    <lastmod>2022-04-06T16:01:45.912Z</lastmod>
+    <lastmod>2022-04-12T10:04:43.846Z</lastmod>
   </url>
 </urlset>

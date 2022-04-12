@@ -154,6 +154,132 @@
     "text": "Visualisieren\n\naccuracy |> \n  ggplot(aes(x = condition, y = accuracy, fill = condition)) +\n  geom_col() +\n  scale_fill_manual(\n    values = c(invalid = \"#9E0142\",\n    neutral = \"#C4C4B7\",\n    valid = \"#2EC762\")\n  ) +\n  labs(\n    x = \"Cue\",\n    y = \"Proportion correct\",\n    title = \"Accuracy per person/condition\"\n  ) +\n  theme_linedraw(base_size = 28) +\n  facet_wrap(~ID)"
   },
   {
+    "objectID": "pages/chapters/06_signal_detection_ii.html",
+    "href": "pages/chapters/06_signal_detection_ii.html",
+    "title": "Signal Detection Theory: II",
+    "section": "",
+    "text": "Note\n\n\n\n👉 R Code für dieses Kapitel downloaden\n👉 Daten downloaden"
+  },
+  {
+    "objectID": "pages/chapters/06_signal_detection_ii.html#daten-importieren",
+    "href": "pages/chapters/06_signal_detection_ii.html#daten-importieren",
+    "title": "Signal Detection Theory: II",
+    "section": "Daten importieren",
+    "text": "Daten importieren\nZuerst die Daten downloaden, und speichern.\n\nlibrary(tidyverse)\nd <- read_csv(\"data/session-6.csv\")"
+  },
+  {
+    "objectID": "pages/chapters/06_signal_detection_ii.html#variablen-bearbeiten",
+    "href": "pages/chapters/06_signal_detection_ii.html#variablen-bearbeiten",
+    "title": "Signal Detection Theory: II",
+    "section": "Variablen bearbeiten",
+    "text": "Variablen bearbeiten\nZu factor konvertieren, etc.\n\nd <- d |>\n    select(ID, condition, cue, direction, choice) |>\n    mutate(across(where(is.character), ~as_factor(.)),\n           cue = fct_relevel(cue, \"left\", \"none\", \"right\")) |>\n    drop_na()"
+  },
+  {
+    "objectID": "pages/chapters/06_signal_detection_ii.html#trials-klassifizieren",
+    "href": "pages/chapters/06_signal_detection_ii.html#trials-klassifizieren",
+    "title": "Signal Detection Theory: II",
+    "section": "Trials klassifizieren",
+    "text": "Trials klassifizieren\nAls Hit, Miss, CR und FA.\n\nsdt <- d |>\n    mutate(type = case_when(\n        direction == \"___\" & choice == \"___\" ~ \"___\"),\n        ___,\n        ___,\n        ___)\n\n\nsdt\n\n# A tibble: 2,362 × 6\n   ID     condition cue   direction choice type \n   <fct>  <fct>     <fct> <fct>     <fct>  <chr>\n 1 chch04 valid     left  left      left   CR   \n 2 chch04 valid     left  left      left   CR   \n 3 chch04 valid     left  left      right  FA   \n 4 chch04 invalid   right left      left   CR   \n 5 chch04 neutral   none  left      left   CR   \n 6 chch04 valid     left  left      left   CR   \n 7 chch04 invalid   right left      left   CR   \n 8 chch04 valid     left  left      left   CR   \n 9 chch04 neutral   none  left      left   CR   \n10 chch04 neutral   none  right     left   Miss \n# … with 2,352 more rows"
+  },
+  {
+    "objectID": "pages/chapters/06_signal_detection_ii.html#sdt-kennzahlen-zusammenzählen",
+    "href": "pages/chapters/06_signal_detection_ii.html#sdt-kennzahlen-zusammenzählen",
+    "title": "Signal Detection Theory: II",
+    "section": "SDT Kennzahlen zusammenzählen",
+    "text": "SDT Kennzahlen zusammenzählen\n\nsdt_summary <- sdt |>\n    group_by(ID, cue) |>\n    count(type)\n\n\nsdt_summary\n\n# A tibble: 170 × 4\n# Groups:   ID, cue [45]\n   ID     cue   type      n\n   <fct>  <fct> <chr> <int>\n 1 chch04 left  CR       29\n 2 chch04 left  FA        3\n 3 chch04 left  Hit       7\n 4 chch04 left  Miss      1\n 5 chch04 none  CR       38\n 6 chch04 none  FA        2\n 7 chch04 none  Hit      34\n 8 chch04 none  Miss      6\n 9 chch04 right CR        5\n10 chch04 right FA        3\n# … with 160 more rows"
+  },
+  {
+    "objectID": "pages/chapters/06_signal_detection_ii.html#von-wide-zu-long-konvertieren",
+    "href": "pages/chapters/06_signal_detection_ii.html#von-wide-zu-long-konvertieren",
+    "title": "Signal Detection Theory: II",
+    "section": "Von wide zu long konvertieren",
+    "text": "Von wide zu long konvertieren\n\nsdt_summary <- sdt_summary |>\n    pivot_wider(names_from = type, values_from = n)\n\n\nsdt_summary\n\n# A tibble: 45 × 6\n# Groups:   ID, cue [45]\n   ID     cue      CR    FA   Hit  Miss\n   <fct>  <fct> <int> <int> <int> <int>\n 1 chch04 left     29     3     7     1\n 2 chch04 none     38     2    34     6\n 3 chch04 right     5     3    25     7\n 4 chmi14 left     21    10     5     3\n 5 chmi14 none     18    19    29     7\n 6 chmi14 right     3     4    26     4\n 7 J      left     19    12     5     3\n 8 J      none     23    16    33     6\n 9 J      right     6     2    20    12\n10 jh     left     32    NA     5     3\n# … with 35 more rows"
+  },
+  {
+    "objectID": "pages/chapters/06_signal_detection_ii.html#funktionen-definieren",
+    "href": "pages/chapters/06_signal_detection_ii.html#funktionen-definieren",
+    "title": "Signal Detection Theory: II",
+    "section": "Funktionen definieren",
+    "text": "Funktionen definieren\n\nreplace_NA <- function(x) {\n    x = ifelse(is.na(x), 0, x)\n    x\n}\n\ncorrect_zero_one <- function(x) {\n    if (identical(x, 0)) {\n        x = x + 0.001\n    } else if (identical(x, 1)) {\n        x = x - 0.001\n    }\n    x\n}"
+  },
+  {
+    "objectID": "pages/chapters/06_signal_detection_ii.html#nas-ersetzen",
+    "href": "pages/chapters/06_signal_detection_ii.html#nas-ersetzen",
+    "title": "Signal Detection Theory: II",
+    "section": "NAs ersetzen",
+    "text": "NAs ersetzen\n\nsdt_summary <- sdt_summary |>\n    mutate(across(c(Hit, Miss, FA, CR), replace_NA))"
+  },
+  {
+    "objectID": "pages/chapters/06_signal_detection_ii.html#hit-rate-und-false-alarm-rate-berechnen",
+    "href": "pages/chapters/06_signal_detection_ii.html#hit-rate-und-false-alarm-rate-berechnen",
+    "title": "Signal Detection Theory: II",
+    "section": "Hit Rate und False Alarm Rate berechnen",
+    "text": "Hit Rate und False Alarm Rate berechnen\n\nsdt_summary <- sdt_summary |>\n    mutate(hit_rate = ___,\n           fa_rate = ___)"
+  },
+  {
+    "objectID": "pages/chapters/06_signal_detection_ii.html#werte-0-und-1-korrigieren",
+    "href": "pages/chapters/06_signal_detection_ii.html#werte-0-und-1-korrigieren",
+    "title": "Signal Detection Theory: II",
+    "section": "Werte 0 und 1 korrigieren",
+    "text": "Werte 0 und 1 korrigieren\n\nsdt_summary <- sdt_summary |>\n    mutate(across(c(hit_rate, fa_rate), correct_zero_one))"
+  },
+  {
+    "objectID": "pages/chapters/06_signal_detection_ii.html#z-transformation",
+    "href": "pages/chapters/06_signal_detection_ii.html#z-transformation",
+    "title": "Signal Detection Theory: II",
+    "section": "Z-Transformation",
+    "text": "Z-Transformation\n\nsdt_summary <- sdt_summary |>\n    mutate(zhr = ___,\n           zfa = ___)"
+  },
+  {
+    "objectID": "pages/chapters/06_signal_detection_ii.html#sdt-kennzahlen-berechnen",
+    "href": "pages/chapters/06_signal_detection_ii.html#sdt-kennzahlen-berechnen",
+    "title": "Signal Detection Theory: II",
+    "section": "SDT Kennzahlen berechnen",
+    "text": "SDT Kennzahlen berechnen\n\nsdt_summary <- sdt_summary |>\n    mutate(dprime = ___,\n           k = ___,\n           c = ___) |>\n    mutate(across(c(dprime, k, c), round, 2))"
+  },
+  {
+    "objectID": "pages/chapters/06_signal_detection_ii.html#variablen-auswählen",
+    "href": "pages/chapters/06_signal_detection_ii.html#variablen-auswählen",
+    "title": "Signal Detection Theory: II",
+    "section": "Variablen auswählen",
+    "text": "Variablen auswählen\n\nsdt_final <- sdt_summary |>\n    select(ID, cue, dprime, k, c)"
+  },
+  {
+    "objectID": "pages/chapters/06_signal_detection_ii.html#eine-person-auswählen.",
+    "href": "pages/chapters/06_signal_detection_ii.html#eine-person-auswählen.",
+    "title": "Signal Detection Theory: II",
+    "section": "Eine Person auswählen.",
+    "text": "Eine Person auswählen.\n\nSU6460 <- d |>\n    filter(ID %in% \"SU6460\")\n\nSU6460_sdt <- sdt_final |>\n    filter(ID %in% \"SU6460\")"
+  },
+  {
+    "objectID": "pages/chapters/06_signal_detection_ii.html#visualisieren",
+    "href": "pages/chapters/06_signal_detection_ii.html#visualisieren",
+    "title": "Signal Detection Theory: II",
+    "section": "Visualisieren",
+    "text": "Visualisieren\n\nSU6460_sdt\n\n# A tibble: 3 × 5\n# Groups:   ID, cue [3]\n  ID     cue   dprime     k     c\n  <fct>  <fct>  <dbl> <dbl> <dbl>\n1 SU6460 left    0.32  0    -0.16\n2 SU6460 none    0.3  -0.23 -0.38\n3 SU6460 right  -0.27 -0.67 -0.54\n\n\n\nSU6460_sdt |>\n    ggplot(aes(x = cue, y = dprime, group = 1)) +\n    geom_line() +\n    geom_point(shape = 21, size = 3, fill = \"white\")\n\n\n\n\n\nSU6460_sdt |>\n    ggplot(aes(x = cue, y = c, group = 1)) +\n    geom_line() +\n    geom_point(shape = 21, size = 3, fill = \"white\")"
+  },
+  {
+    "objectID": "pages/chapters/06_signal_detection_ii.html#generalized-linear-model",
+    "href": "pages/chapters/06_signal_detection_ii.html#generalized-linear-model",
+    "title": "Signal Detection Theory: II",
+    "section": "Generalized Linear Model",
+    "text": "Generalized Linear Model\nCheck levels: right muss die zweite Faktorstufe sein!\n\nlevels(SU6460$choice)\n\n[1] \"left\"  \"right\"\n\n\n\nSU6460_glm_k_left <- glm(choice ~ direction,\n                      family = binomial(link = \"probit\"),\n                      data = SU6460 |> filter(cue == \"left\"))\n\nsummary(SU6460_glm_k_left)\n\n\nCall:\nglm(formula = choice ~ direction, family = binomial(link = \"probit\"), \n    data = filter(SU6460, cue == \"left\"))\n\nDeviance Residuals: \n    Min       1Q   Median       3Q      Max  \n-1.4006  -1.1774   0.9695   1.1774   1.1774  \n\nCoefficients:\n                Estimate Std. Error z value Pr(>|z|)\n(Intercept)    2.208e-17  2.216e-01   0.000    1.000\ndirectionright 3.186e-01  5.028e-01   0.634    0.526\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 55.352  on 39  degrees of freedom\nResidual deviance: 54.946  on 38  degrees of freedom\nAIC: 58.946\n\nNumber of Fisher Scoring iterations: 4\n\n\n\nSU6460_glm_k_right <- glm(choice ~ direction,\n                       family = binomial(link = \"probit\"),\n                       data = SU6460 |> filter(cue == \"right\"))\n\nsummary(SU6460_glm_k_right)\n\n\nCall:\nglm(formula = choice ~ direction, family = binomial(link = \"probit\"), \n    data = filter(SU6460, cue == \"right\"))\n\nDeviance Residuals: \n    Min       1Q   Median       3Q      Max  \n-1.6651  -1.4614   0.9178   0.9178   0.9178  \n\nCoefficients:\n               Estimate Std. Error z value Pr(>|z|)\n(Intercept)      0.6745     0.4818   1.400    0.162\ndirectionright  -0.2722     0.5331  -0.511    0.610\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 50.446  on 39  degrees of freedom\nResidual deviance: 50.181  on 38  degrees of freedom\nAIC: 54.181\n\nNumber of Fisher Scoring iterations: 4\n\n\n\nSU6460 <- SU6460 |>\n    mutate(dir = if_else(direction == \"left\", -1/2, 1/2))\n\n\nSU6460_glm_c_left <- glm(choice ~ dir,\n                       family = binomial(link = \"probit\"),\n                       data = SU6460 |> filter(cue == \"left\"))\nsummary(SU6460_glm_c_left)\n\n\nCall:\nglm(formula = choice ~ dir, family = binomial(link = \"probit\"), \n    data = filter(SU6460, cue == \"left\"))\n\nDeviance Residuals: \n    Min       1Q   Median       3Q      Max  \n-1.4006  -1.1774   0.9695   1.1774   1.1774  \n\nCoefficients:\n            Estimate Std. Error z value Pr(>|z|)\n(Intercept)   0.1593     0.2514   0.634    0.526\ndir           0.3186     0.5028   0.634    0.526\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 55.352  on 39  degrees of freedom\nResidual deviance: 54.946  on 38  degrees of freedom\nAIC: 58.946\n\nNumber of Fisher Scoring iterations: 4\n\n\n\nSU6460_glm_c_right <- glm(choice ~ dir,\n                        family = binomial(link = \"probit\"),\n                        data = SU6460 |> filter(cue == \"right\"))\n\nsummary(SU6460_glm_c_right)\n\n\nCall:\nglm(formula = choice ~ dir, family = binomial(link = \"probit\"), \n    data = filter(SU6460, cue == \"right\"))\n\nDeviance Residuals: \n    Min       1Q   Median       3Q      Max  \n-1.6651  -1.4614   0.9178   0.9178   0.9178  \n\nCoefficients:\n            Estimate Std. Error z value Pr(>|z|)  \n(Intercept)   0.5384     0.2665   2.020   0.0434 *\ndir          -0.2722     0.5331  -0.511   0.6096  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 50.446  on 39  degrees of freedom\nResidual deviance: 50.181  on 38  degrees of freedom\nAIC: 54.181\n\nNumber of Fisher Scoring iterations: 4"
+  },
+  {
+    "objectID": "pages/chapters/07_response_times_i.html",
+    "href": "pages/chapters/07_response_times_i.html",
+    "title": "Reaktionszeiten: I",
+    "section": "",
+    "text": "Note\n\n\n\n👉 R Code für dieses Kapitel downloaden\n👉 Daten downloaden"
+  },
+  {
+    "objectID": "pages/chapters/07_response_times_i.html#zusammenfassen-zentrale-tendenz-und-dispersion",
+    "href": "pages/chapters/07_response_times_i.html#zusammenfassen-zentrale-tendenz-und-dispersion",
+    "title": "Reaktionszeiten: I",
+    "section": "Zusammenfassen: zentrale Tendenz und Dispersion",
+    "text": "Zusammenfassen: zentrale Tendenz und Dispersion\nMittelwert und Standardabweichung\n\nd %>% \n  group_by(group) %>% \n  summarise(mean = mean(rt),\n            sd = sd(rt))\n\n# A tibble: 2 × 3\n  group    mean    sd\n  <fct>   <dbl> <dbl>\n1 control  822.  171.\n2 adhd     839.  214.\n\n\nMedian und Interquartilsbereich\nDer Interquartilsbereich repräntiert den Unterschied zwischen dem ersten (25. Perzentil) und dritten (75. Perzentil) Quartil. In diesem Bereich befinden sich 50% der Datenpunkte.\n\nd %>% \n  group_by(group) %>% \n  summarise(mean = median(rt),\n            q25 = quantile(rt, probs = 0.25),\n            q75 = quantile(rt, probs = 0.75)) |> \n  mutate(IQR = q75 - q25)\n\n# A tibble: 2 × 5\n  group    mean   q25   q75   IQR\n  <fct>   <dbl> <dbl> <dbl> <dbl>\n1 control  782.  694.  898.  205.\n2 adhd     784.  694.  923.  228.\n\n\n\nd %>% \n  group_by(group) %>% \n  summarise(mean = median(rt),\n            IQR = IQR(rt))\n\n# A tibble: 2 × 3\n  group    mean   IQR\n  <fct>   <dbl> <dbl>\n1 control  782.  205.\n2 adhd     784.  228.\n\n\n\nfuns <- list(mean = mean, median = median, \n             sd = sd, IQR = IQR)\n\nby_group <- d |>\n  group_by(group) |>\n  summarise(across(rt, funs, .names = \"{.fn}\")) |>\n  mutate(across(where(is.numeric), ~round(., 2)))\n\n\nby_group\n\n# A tibble: 2 × 5\n  group    mean median    sd   IQR\n  <fct>   <dbl>  <dbl> <dbl> <dbl>\n1 control  822.   782.  171.  205.\n2 adhd     839.   784.  214.  228.\n\n\n\np1 +\n  geom_vline(aes(xintercept = mean), \n             data = by_group,\n             color = \"steelblue\",\n             lwd = 1.5) +\n  geom_vline(aes(xintercept = median), \n             data = by_group, \n             color = \"red\",\n             lwd = 1.5)\n\n\n\n\nZentrale Tendenz bei schiefen Verteilungen\nSowohl Mittelwert als auch Median sind jedoch problematisch als Masse der zentralen Tendenz für asymmetrische Verteilungen. Der Mittelwert kann durch eine hohe Schiefe und Ausreissern verschoben werden, und repräsentiert die zentrale Tendenz der Verteilung nicht besonders gut.\nDer Median ist ein besseres Mass für eine typische Beobachtung aus dieser Verteilung, ist jedoch nicht erwartungstreu, das heisst der Median überschätzt den Populationsmedian. Der Grad der Überschätzung steigt mit sinkender Anzahl Beobachtungen (d.h. vor allem bei kleinen Stichproben).\nQuantile\n\ndeciles <- seq(0.1, 0.9, length.out = 9)\n\n\nquantile_fun <- function(x, probs = c(0.25, 0.5, 0.75)) {\n  tibble(rt = quantile(x, probs, type = 8), quantile = probs)\n}\n\n\nd_quantiles <- d %>% \n  group_by(group) %>% \n  summarise(quantile_fun(rt, probs = deciles))\n\n\nd_quantiles\n\n# A tibble: 18 × 3\n# Groups:   group [2]\n   group      rt quantile\n   <fct>   <dbl>    <dbl>\n 1 control  649.      0.1\n 2 control  684.      0.2\n 3 control  711.      0.3\n 4 control  740.      0.4\n 5 control  782.      0.5\n 6 control  826.      0.6\n 7 control  875.      0.7\n 8 control  949.      0.8\n 9 control 1045.      0.9\n10 adhd     631.      0.1\n11 adhd     674.      0.2\n12 adhd     712.      0.3\n13 adhd     745.      0.4\n14 adhd     784.      0.5\n15 adhd     828.      0.6\n16 adhd     874.      0.7\n17 adhd     980.      0.8\n18 adhd    1108.      0.9\n\n\nShift function\nWir müssen nun den Dataframe mit den Quantilen ins “wide” Format konvertieren, um zwei Spalten für die control und adhd Gruppen zu erhalten. Danach können wir die Differenzen zwischen den Gruppen für jedes Quantil berechnen.\n\nd_quantile_differences <- d_quantiles |> \n  pivot_wider(names_from = \"group\", values_from = \"rt\") \n\n\nd_quantile_differences\n\n# A tibble: 9 × 3\n  quantile control  adhd\n     <dbl>   <dbl> <dbl>\n1      0.1    649.  631.\n2      0.2    684.  674.\n3      0.3    711.  712.\n4      0.4    740.  745.\n5      0.5    782.  784.\n6      0.6    826.  828.\n7      0.7    875.  874.\n8      0.8    949.  980.\n9      0.9   1045. 1108.\n\n\n\nd_quantile_differences <- d_quantile_differences |> \n    mutate(`control - adhd` = control - adhd)\n\n\nd_quantile_differences\n\n# A tibble: 9 × 4\n  quantile control  adhd `control - adhd`\n     <dbl>   <dbl> <dbl>            <dbl>\n1      0.1    649.  631.            18.2 \n2      0.2    684.  674.            10.6 \n3      0.3    711.  712.            -1.45\n4      0.4    740.  745.            -4.99\n5      0.5    782.  784.            -2.16\n6      0.6    826.  828.            -1.57\n7      0.7    875.  874.             1.42\n8      0.8    949.  980.           -30.4 \n9      0.9   1045. 1108.           -62.8 \n\n\nShift function grafisch darstellen\n\nd_quantile_differences %>% \n  ggplot(aes(x = control, y = `control - adhd`)) +\n  geom_hline(yintercept = 0, linetype = 3) +\n  geom_vline(xintercept = d_quantile_differences %>% \n               filter(quantile == \"50%\") %>% \n               select(adhd) %>% \n               pull(), linetype = 3) +\n  geom_line(aes(group = 1), color = \"steelblue\", size = 2) +\n  geom_point(shape = 21, color = \"steelblue\", fill = \"white\", size = 5, stroke = 1) +\n  coord_cartesian(ylim = c(-300, 300))\n\n\n\n\n\ninstall.packages(\"remotes\")\nremotes::install_github(\"GRousselet/rogme\")\n\n\n# library(rogme)\n\n\nout <- rogme::shifthd(d, rt ~ group)\n\n\nrogme::plot_sf(out)\n\n[[1]]"
+  },
+  {
     "objectID": "pages/chapters/04_summarizing_data.html",
     "href": "pages/chapters/04_summarizing_data.html",
     "title": "Daten bearbeiten und zusammenfassen",
@@ -257,6 +383,13 @@
     "title": "Signal Detection Theory: I",
     "section": "Parameter recovery",
     "text": "Parameter recovery\nWe can now attempt to recover the known parameters c and d' from the observed hit and false alarm rates.\n\nyes_observer <- yes_observer |>\n    mutate(hit_rate = Hit/(Hit + Miss),\n           fa_rate = FA/(FA + CR))\n\nyes_observer <- yes_observer |>\n    mutate(zhr = qnorm(hit_rate),\n           zfa = qnorm(fa_rate))\n\nyes_observer <- yes_observer |>\n    mutate(dprime = zhr - zfa,\n           k = - zfa,\n           c = -0.5 * (zhr + zfa)) |>\n    mutate(across(c(dprime, c), round, 2))\n\n\nyes_observer \n\n# A tibble: 1 × 11\n    Hit  Miss    FA    CR hit_rate fa_rate   zhr   zfa dprime      k     c\n  <int> <dbl> <int> <dbl>    <dbl>   <dbl> <dbl> <dbl>  <dbl>  <dbl> <dbl>\n1    92     8    74    26     0.92    0.74  1.41 0.643   0.76 -0.643 -1.02\n\n\nFor the biased observer, the valuues we used were \\(d' = 1\\) and \\(c = -1\\). Are we able to recover these?\n\nyes_observer |> pull(c, dprime)\n\n 0.76 \n-1.02 \n\n\n\n\n\n\n\n\nNote\n\n\n\nWhy is it seemingly difficult to recover theses parameters?"
+  },
+  {
+    "objectID": "pages/chapters/08_response_times_ii.html",
+    "href": "pages/chapters/08_response_times_ii.html",
+    "title": "Reaktionszeiten: II",
+    "section": "",
+    "text": "Hierarchical Shift Function\nWir schauen uns Daten aus einem Lexical Decision Task (Wagenmakers and Brown 2007) an, bei dem Versuchspersonen Wörter als entweder word oder non-word klassifizieren mussten. Es ist bekannt, dass Wörter welche häufiger vorkommen schneller klassifiziert werden können, als seltene Wörter. In diesem Experiment mussten Versuchspersonen diesen Task unter zwei Bedingungen durchführen. In der speed Bedingung mussten sie sich so schnell wie möglich entscheiden, in der accuracy Bedingung mit so wenig Fehler wie möglich.\nHier untersuchen wir also den Unterschied in der Reaktionszeit zwischen zwei “within” Bedingungen. Die Daten befinden sich im Package rtdists, welches zuerst installiert werden sollte.\n\nlibrary(tidyverse)\nlibrary(rtdists)\nlibrary(viridis)\n\ndata(speed_acc) \n\nspeed_acc <- speed_acc |>\n  as_tibble()\n\n\ndf_speed_acc <- speed_acc |> \n   # zwischen 180 ms and 3000 ms\n  filter(rt > 0.18, rt < 3) |> \n   # zu Character konvertieren (damit filter funktioniert)\n  mutate(across(c(stim_cat, response), as.character)) |> \n  # Korrekte Antworten\n  filter(response != 'error', stim_cat == response) |> \n  # wieder zu Factor konvertieren\n  mutate(across(c(stim_cat, response), as_factor))\n\n\ndf_speed_acc\n\n# A tibble: 27,936 × 9\n   id    block condition stim  stim_cat frequency   response    rt censor\n   <fct> <fct> <fct>     <fct> <fct>    <fct>       <fct>    <dbl> <lgl> \n 1 1     1     speed     5015  nonword  nw_low      nonword  0.7   FALSE \n 2 1     1     speed     6481  nonword  nw_very_low nonword  0.46  FALSE \n 3 1     1     speed     3305  word     very_low    word     0.455 FALSE \n 4 1     1     speed     4468  nonword  nw_high     nonword  0.773 FALSE \n 5 1     1     speed     1047  word     high        word     0.39  FALSE \n 6 1     1     speed     5036  nonword  nw_low      nonword  0.603 FALSE \n 7 1     1     speed     1111  word     high        word     0.435 FALSE \n 8 1     1     speed     6561  nonword  nw_very_low nonword  0.524 FALSE \n 9 1     1     speed     1670  word     high        word     0.427 FALSE \n10 1     1     speed     6207  nonword  nw_very_low nonword  0.456 FALSE \n# … with 27,926 more rows\n\n\nWir schauen uns vier Versuchspersonen grafisch an:\n\ndata_plot <- df_speed_acc |> \n  filter(id %in% c(1, 8, 11, 15))\n\ndata_plot |> \n  ggplot(aes(x = rt)) + \n    geom_histogram(aes(fill = condition), alpha = 0.5, bins = 60) + \n    facet_wrap(~id) +\n    coord_cartesian(xlim=c(0, 1.6)) +\n    scale_fill_viridis(discrete = TRUE, option = \"E\")\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nSchauen Sie sich alle Vpn an.\n\n\n\n\n\n\n\n\nNote\n\n\n\nWas würden Sie anhand der Histogramme erwarten?\n\n\n\n\n\n\n\n\nNote\n\n\n\nBerechnen Sie nun die Differenzen der Dezile zwischen den Bedingungen für jede Versuchsperson.\n\n\n\nout_speed_acc <- rogme::hsf_pb(df_speed_acc, rt ~ condition + id)\n\n\np_speed_acc <- rogme::plot_hsf_pb(out_speed_acc, interv = \"ci\")\np_speed_acc\n\n\n\n\nIn dieser Grafik sehen wir auf der X-Achse die Dezile der accuracy Bedingung und auf der Y-Achse die Differenz accuracy - speed. Die Differenz ist bei jedem Dezil positiv und scheint steig grösser zu werden. Die accuracy Bedingung führt also zu längeren und variableren Reaktionszeiten. Die Bedingungen unterscheiden sich im Median, aber wenn wir nur das berücksichtigt hätten, würden wir verpassen, dass sich die Verteilungen sehr stark am rechten Ende der Verteilung unterscheiden.\nZum Vergleich berechnen wir noch Bedingungsmittelwerte der Median Reaktionszeiten.\n\nby_subject <- df_speed_acc |> \n  group_by(id, condition) |> \n  summarise(mean = median(rt))\n\nagg <- Rmisc::summarySEwithin(by_subject,\n                       measurevar = \"mean\",\n                       withinvars = \"condition\",\n                       idvar = \"id\",\n                       na.rm = FALSE,\n                       conf.interval = .95)\n\n\nagg |> \n  ggplot(aes(condition, mean, fill = condition)) +\n  geom_col(alpha = 0.8) +\n  geom_line(aes(group = 1), linetype = 3) +   \n  geom_errorbar(aes(ymin = mean-se, ymax = mean+se),\n                width = 0.1, size=1, color=\"black\") +\n  scale_fill_viridis(discrete=TRUE, option=\"cividis\") +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\nReferences\n\nWagenmakers, Eric-Jan, and Scott Brown. 2007. “On the Linear Relation Between the Mean and the Standard Deviation of a Response Time Distribution.” Psychological Review 114 (3): 830–41. https://doi.org/10.1037/0033-295X.114.3.830.\n\nReusehttps://creativecommons.org/licenses/by/4.0/CitationBibTeX citation:@online{ellis2022,\n  author = {Andrew Ellis},\n  title = {Reaktionszeiten: {II}},\n  date = {2022-04-12},\n  url = {https://kogpsy.github.io/neuroscicomplab_fs22_quarto//pages/chapters/08_response_times_ii.html},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nAndrew Ellis. 2022. “Reaktionszeiten: II.” April 12, 2022.\nhttps://kogpsy.github.io/neuroscicomplab_fs22_quarto//pages/chapters/08_response_times_ii.html."
   },
   {
     "objectID": "pages/chapters/03_data_cleaning.html",
