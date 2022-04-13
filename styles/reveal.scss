@@ -14,7 +14,7 @@
   margin-bottom: 10px;
 }
 .reveal h2 {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 .your-turn {
   border-left: solid 5px #f4dbb3;
@@ -28,6 +28,9 @@
 .even-smaller :not(h2) {
   font-size: 1.6rem;
 }
+.even-even-smaller :not(h2) {
+  font-size: 1.4rem;
+}
 
 .topic-number {
   font-size: 25rem;
@@ -36,4 +39,8 @@
 .topic-text {
   font-size: 5rem;
   margin-top: 11rem;
+}
+
+.width-75 {
+  width: 80%;
 }

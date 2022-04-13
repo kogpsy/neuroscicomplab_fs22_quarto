@@ -37,7 +37,7 @@ website:
           - text: "4. Sitzung (15.03.2022)"
             file: slides/04_process_data.qmd
           - text: "5. Sitzung (22.03.2022)"
-            file: slides/
+            file: slides/05_signal_detection.qmd
           - text: "6. Sitzung (29.03.2022)"
             file: slides/
           - text: "7. Sitzung (05.04.2022)"
