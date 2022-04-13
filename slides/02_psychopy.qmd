@@ -1,6 +1,6 @@
 ---
-title: "1. Sitzung"
-subtitle: "Einführung"
+title: "2. Sitzung"
+subtitle: "PsychoPy"
 author: "Andrew Ellis"
 institute: "Neurowissenschaft Computerlab FS 22"
 format:
