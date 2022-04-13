@@ -1,0 +1,30 @@
+/*-- scss:rules --*/
+
+.columns {
+  display: flex;
+  justify-content: space-between;
+}
+.discussion {
+  border-left: solid 5px rgb(198, 234, 241);
+  background-color: rgb(231, 251, 255);
+}
+.discussion:before {
+  content: "🤔";
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.reveal h2 {
+  margin-bottom: 40px;
+}
+.your-turn {
+  border-left: solid 5px #f4dbb3;
+  background-color: #fdf8f1;
+}
+.your-turn:before {
+  content: "✍️";
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.even-smaller :not(h2) {
+  font-size: 1.6rem;
+}

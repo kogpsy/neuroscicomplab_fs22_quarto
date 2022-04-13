@@ -26,6 +26,24 @@ website:
           - pages/chapters/06_signal_detection_ii.qmd
           - pages/chapters/07_response_times_i.qmd
           - pages/chapters/08_response_times_ii.qmd
+      - text: Slides
+        menu:
+          - text: "1. Sitzung (22.02.2022)"
+            file: slides/01_introduction.qmd
+          - text: "2. Sitzung (01.03.2022)"
+            file: slides/
+          - text: "3. Sitzung (08.03.2022)"
+            file: slides/
+          - text: "4. Sitzung (15.03.2022)"
+            file: slides/
+          - text: "5. Sitzung (22.03.2022)"
+            file: slides/
+          - text: "6. Sitzung (29.03.2022)"
+            file: slides/
+          - text: "7. Sitzung (05.04.2022)"
+            file: slides/
+          - text: "8. Sitzung (12.04.2022)"
+            file: slides/
       - text: Übungen
         menu:
           - pages/exercises/exercise_01.qmd
