@@ -9,7 +9,7 @@ format:
     logo: ../assets/logo.png
     footer: Neurowissenschaft im Computerlab FS22
     smaller: true
-date: "2022-03-15"
+date: "2022-03-22"
 ---
 
 :::: {.columns}
