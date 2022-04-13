@@ -33,7 +33,7 @@ website:
           - text: "2. Sitzung (01.03.2022)"
             file: slides/02_psychopy.qmd
           - text: "3. Sitzung (08.03.2022)"
-            file: slides/
+            file: slides/03_import_and_process_data.qmd
           - text: "4. Sitzung (15.03.2022)"
             file: slides/
           - text: "5. Sitzung (22.03.2022)"

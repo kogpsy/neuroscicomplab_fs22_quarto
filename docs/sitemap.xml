@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/index.html</loc>
-    <lastmod>2022-04-12T14:01:27.408Z</lastmod>
+    <lastmod>2022-04-13T14:58:36.594Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/solutions/solution_03.html</loc>
@@ -67,5 +67,17 @@
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/exercises/exercise_03.html</loc>
     <lastmod>2022-04-12T14:03:13.382Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/slides/01_introduction.html</loc>
+    <lastmod>2022-04-13T14:04:58.986Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/slides/02_psychopy.html</loc>
+    <lastmod>2022-04-13T14:36:26.421Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/slides/03_import_and_process_data.html</loc>
+    <lastmod>2022-04-13T15:14:55.996Z</lastmod>
   </url>
 </urlset>

@@ -509,5 +509,152 @@
     "title": "Übung 3",
     "section": "Aufgaben",
     "text": "Aufgaben\n\n\n\n\n\n\nNote\n\n\n\nAufgabe 1\n\nSpeichern Sie das CSV File in Ihren Projektordner.\nLesen Sie das CSV File ein. Per Konvention verwenden wir den Variablennamen d für den Datensatz.\nÜberprüfen Sie, ob alle Variablen vorhanden sind. Verwenden Sie z.B. die Funktion glimpse().\nKonvertieren Sie die Gruppierungsvariablen subject und condition zu Faktoren.\n\n\n\n\nlibrary(tidyverse)\n\n\nd <- read_csv(\"___\")\n\nSchauen Sie sich die Variablen an:\n\nglimpse(d)\n\nKonvertieren Sie die Gruppierungsvariablen zu Faktoren:\n\nd <- d |>\n    mutate(___ = as_factor(___),\n           ___ = as_factor(___))\n\n\n\n\n\n\n\nNote\n\n\n\nAufgabe 2\nGibt es Versuchspersonen die in einer der Bedingungen Reaktionszeiten hat, welche mehr als zwei Standardabweichungen über dem Bedingungsmittelwert liegen?\n\n\n\n# summary stats (means) for subjects/conditions\nsum_stats_participants <- d |>\n    group_by(___, ___) |>\n    dplyr::summarise(\n        mean_P = mean(___))\n\n\n# summary stats (means and SDs) for conditions\nsum_stats_conditions <- d |>\n    group_by(___) |>\n    dplyr::summarise(\n        mean_C = mean(__),\n        sd_C = sd(___))\n\n\nsum_stats_participants <-\n    full_join(\n        sum_stats_participants,\n        sum_stats_conditions,\n        by = \"condition\") |>\n    mutate(outlier_P = ___)\n\n\n# show outlier participants\nsum_stats_participants |>\n    filter(outlier_P == 1) |>\n    show()\n\n\nexcluded <- sum_stats_participants |>\n    filter(outlier_P == 1)\n\nexcluded\n\n\nd_cleaned <- d |>\n    filter(!(subject %in% excluded$subject)) |>\n    mutate(subject = fct_drop(subject))\n\n\n\n\n\n\n\nNote\n\n\n\nAufgabe 3\n\nGibt es einzelne Trials, in denen Versuchpersonen länger als 4 Standardabweichungen über dem Bedingungsmittelwert gebraucht haben, um zu Antworten?\nGibt es einzelne Trials, in denen Versuchpersonen zu schnell (unter 100 ms) geantwortet haben?\nSpeichern Sie den bearbeiteten Datensatz als CSV File.\n\n\n\n\nd_cleaned <- d_cleaned |>\n    full_join(\n        sum_stats_conditions,\n        by = \"condition\") |>\n    mutate(\n        trial_type = case_when(\n            ___ > ___ ~ \"too slow\",\n            ___ < ___ ~ \"too fast\",\n            TRUE ~ \"OK\") |>\n            factor(levels = c(\"OK\", \"too fast\", \"too slow\")))\n\n\nd_cleaned |>\n    ggplot(aes(x = trial_num, y = rt, color = trial_type, shape = trial_type)) +\n    geom_point(alpha = 0.6) +\n    facet_grid(~condition) +\n    scale_color_manual(values = c(\"gray70\", \"red\", \"steelblue\"))\n\n\nd_cleaned |>\n    filter(trial_type != \"OK\")\n\n\nd_cleaned <- d_cleaned |>\n    filter(trial_type == \"OK\") |>\n    select(subject, trial_num, condition, signal_present, correct, rt)\n\n\nd_cleaned |>\n    ggplot(aes(x = trial_num, y = rt)) +\n    geom_point(alpha = 0.6) +\n    facet_grid(~condition) +\n    scale_color_manual(values = c(\"gray70\", \"red\", \"steelblue\"))\n\n\nd_cleaned |> write_csv(___)\n\n\n\n\n\n\n\nTip\n\n\n\nOptionale Aufgabe\nDie Aufgaben oben bieten lediglich Voschläge, wie man “Ausreisser” identifizieren könnte. Wenn Sie andere Voschläge haben, können Sie den Code anpassen, oder selber Code schreiben. Können Sie Ihr Vorgehen begründen?"
+  },
+  {
+    "objectID": "slides/01_introduction.html#model-based-cognitive-neuroscience",
+    "href": "slides/01_introduction.html#model-based-cognitive-neuroscience",
+    "title": "1. Sitzung",
+    "section": "(Model-based) Cognitive Neuroscience",
+    "text": "(Model-based) Cognitive Neuroscience\n\n\nWas heisst Model-based Neuroscience?\nWelche Kenntnisse brauchen wir, um Experiment durchzuführen und Daten auszuwerten?\nWelche Programmiertechniken/sprachen brauchen wir?"
+  },
+  {
+    "objectID": "slides/01_introduction.html#model-based-neuroscience-beispiel",
+    "href": "slides/01_introduction.html#model-based-neuroscience-beispiel",
+    "title": "1. Sitzung",
+    "section": "Model-based Neuroscience: Beispiel",
+    "text": "Model-based Neuroscience: Beispiel\nMulder, M. J., Wagenmakers, E.-J., Ratcliff, R., Boekel, W., & Forstmann, B. U. (2012). Bias in the Brain: A Diffusion Model Analysis of Prior Probability and Potential Payoff. Journal of Neuroscience, 32(7), 2335–2343.\n👉 https://www.jneurosci.org/content/32/7/2335\nIn dieser Studie geht es darum, den Einfluss von Vorwissen (prior knowledge) auf eine simple perzeptuelle Entscheidung zu untersuchen.\n\nAls Task haben die Autoren ein Random Dot Motion Experiment benutzt.\nFür die Datenanalyse wurde unter anderem ein Diffusion Decision Model verwendet."
+  },
+  {
+    "objectID": "slides/01_introduction.html#diffusion-decision-model",
+    "href": "slides/01_introduction.html#diffusion-decision-model",
+    "title": "1. Sitzung",
+    "section": "Diffusion Decision Model",
+    "text": "Diffusion Decision Model"
+  },
+  {
+    "objectID": "slides/01_introduction.html#model-based-neuroscience",
+    "href": "slides/01_introduction.html#model-based-neuroscience",
+    "title": "1. Sitzung",
+    "section": "Model-based Neuroscience",
+    "text": "Model-based Neuroscience\n\nÜberfliegen Sie das Paper, und achten Sie dabei darauf, welche Skills Sie benötigen, um eine solche Studie durchzuführen.\n\nWelches theoretische Wissen brauchen Sie?\nWelche Programmierkenntnisse brauchen Sie?\n\nfür das Experiment\nfür die Datenanalyse\n\nWelche statistischen Verfahen brauchen Sie, um die Daten auszuwerten?\nWarum wurde das Experiment im Scanner und ausserhalb des Scanners durchgeführt?\nWas kann man mit einer solchen Studie herausfinden?"
+  },
+  {
+    "objectID": "slides/01_introduction.html#vorwissen",
+    "href": "slides/01_introduction.html#vorwissen",
+    "title": "1. Sitzung",
+    "section": "Vorwissen",
+    "text": "Vorwissen\nEs wurden zwei verschiedene Typen von Vorwissen benutzt.\n\nA-Priori Wahrscheinlichkeit, dass die Punktwolke sich nach rechts oder nach links bewegte.\nAsymmetrische Belohnung für korrekte links/rechts Entscheidungen."
+  },
+  {
+    "objectID": "slides/01_introduction.html#diffusion-decision-model-1",
+    "href": "slides/01_introduction.html#diffusion-decision-model-1",
+    "title": "1. Sitzung",
+    "section": "Diffusion Decision Model",
+    "text": "Diffusion Decision Model"
+  },
+  {
+    "objectID": "slides/01_introduction.html#model-based-neuroscience-1",
+    "href": "slides/01_introduction.html#model-based-neuroscience-1",
+    "title": "1. Sitzung",
+    "section": "Model-based Neuroscience",
+    "text": "Model-based Neuroscience\n\n\nSchematische Darstellung der erwarteten Resultate.\n\nStarting point: korrekte und inkorrekte RTs unterschieden sich.\nDrift rate: korrekte und inkorrekte RTs sind sich ähnlich.\n\n\n\nTatsächliche Resultate: Quantifizierung des Bias anhand des DDM."
+  },
+  {
+    "objectID": "slides/01_introduction.html#model-based-neuroscience-2",
+    "href": "slides/01_introduction.html#model-based-neuroscience-2",
+    "title": "1. Sitzung",
+    "section": "Model-based Neuroscience",
+    "text": "Model-based Neuroscience\nBOLD Responses der Areale welche besonder stark sowohl auf die “prior probability” als auch auf die “payoff” Manipulation reagierten.\n\n\n\nright MedFG (right medial frontal gyrus)\nACG (anterior cingulate cortex)\nSFG (superior frontal gyrus)\nleft middle temporal gyrus\nIPS (intra-parietal sulcus).\n\n\n\n\n\nDiese Areale sollen eine besondere Rolle in der Verarbeitung von Bias im Entscheidungsverhalten haben."
+  },
+  {
+    "objectID": "slides/01_introduction.html#wichtige-skills",
+    "href": "slides/01_introduction.html#wichtige-skills",
+    "title": "1. Sitzung",
+    "section": "Wichtige Skills",
+    "text": "Wichtige Skills\n\n\n\nTheorien über Entscheidungsverhalten\nExperimente programmieren\n\nTiming (inside/outside scanner)\n\nData cleaning and manipulation (data wrangling)\nStatistische Verfahren für messwiederholte Daten\n\nPsychometric curve\nBinary choices / Reaktionszeiten\nrepeated-measures ANOVA\n\n\n\n\nGrafische Darstellung der Resultate\nKognitive Prozessmodelle\n\nfit Diffusion Decision Model (DDM)\n\nAuswertung von fRMI Daten\n\n\n\n\nMit diesen Themen (ausser der Analyse von fMRI Daten) beschäftigen wir uns in diesem Kurs.\n\n\n\nNeurowissenschaft im Computerlab FS22"
+  },
+  {
+    "objectID": "slides/02_psychopy.html#section",
+    "href": "slides/02_psychopy.html#section",
+    "title": "1. Sitzung",
+    "section": "",
+    "text": "1\n\n\n\nBias RDK Experiment\n\n\n\n\n\n\nNeurowissenschaft im Computerlab FS22"
+  },
+  {
+    "objectID": "slides/02_psychopy.html#bias-rdk-experiment",
+    "href": "slides/02_psychopy.html#bias-rdk-experiment",
+    "title": "2. Sitzung",
+    "section": "Bias RDK Experiment",
+    "text": "Bias RDK Experiment\n\n\n\nRandom-dot motion direction-discrimination task\nInside/outside scanner (timing)\nBias: cue (probability left/right/unbiased)\nFixation cross\nRDK: 3x3 pixels, coherence\n40 bias trials, 40 neutral trials\n32 valid, 8 invalid trials"
+  },
+  {
+    "objectID": "slides/02_psychopy.html#psychopy",
+    "href": "slides/02_psychopy.html#psychopy",
+    "title": "2. Sitzung",
+    "section": "PsychoPy",
+    "text": "PsychoPy\n\n\n\nPsychoPy Website\nRessourcen\nWalk-through: Builder\nDiskussionsforum\nKapitel: Verhaltensexperiment mit PsychoPy"
+  },
+  {
+    "objectID": "slides/02_psychopy.html#pavlovia",
+    "href": "slides/02_psychopy.html#pavlovia",
+    "title": "2. Sitzung",
+    "section": "Pavlovia",
+    "text": "Pavlovia\n\nPavlovia:\n\n\nPavlovia is a place for the wide community of researchers in the behavioural sciences to run, share, and explore experiments online.\n\n\nExperimente suchen.\nZum Beispiel ChoiceRTT ausprobieren und den Code anschauen."
+  },
+  {
+    "objectID": "slides/02_psychopy.html#understanding-your-computer",
+    "href": "slides/02_psychopy.html#understanding-your-computer",
+    "title": "2. Sitzung",
+    "section": "Understanding your Computer",
+    "text": "Understanding your Computer\n\nRefresh rate: 60 Hz. Ein Frame dauert 1/60 Sekunde, oder 16.667 ms.\n\nfrom psychopy import visual\n\nwin = visual.Window()\nwin.getActualFrameRate()\n\nKeyboard timing: Variabilität ~15 ms.\nScreen refresh fängt oben an und endet (~10 ms später) unten."
+  },
+  {
+    "objectID": "slides/02_psychopy.html#probieren-sie-es-selber",
+    "href": "slides/02_psychopy.html#probieren-sie-es-selber",
+    "title": "2. Sitzung",
+    "section": "Probieren Sie es selber!",
+    "text": "Probieren Sie es selber!\n\nVersuchen Sie selber, Teile des Experiments in PsychoPy zu implementieren\n\n\nWenn Sie eine Starthilfe benötigen, downloaden Sie ein Beipiel: 👉 Practice Trials\nEine Einführung finden Sie hier: 👉 Verhaltensexperiment mit PsychoPy\n\n\n\n\nNeurowissenschaft im Computerlab FS22"
+  },
+  {
+    "objectID": "slides/03_import_and_process_data.html#set-up-rrstudio",
+    "href": "slides/03_import_and_process_data.html#set-up-rrstudio",
+    "title": "3. Sitzung",
+    "section": "Set up R/RStudio",
+    "text": "Set up R/RStudio\n\n\n👉 Download R\n👉 Download RStudio\n\n\nRStudio öffnen\nRStudio einrichten\nPackages installieren\n\ninstall.packages(\"tidyverse\")"
+  },
+  {
+    "objectID": "slides/03_import_and_process_data.html#r-kenntnisse",
+    "href": "slides/03_import_and_process_data.html#r-kenntnisse",
+    "title": "3. Sitzung",
+    "section": "R Kenntnisse",
+    "text": "R Kenntnisse\n\n\n👉 Einführung in R\n\nEinführung in RStudio\nR Sprache\nControl flow / Funktionen\nDaten importieren / tidy data / visualisieren\nDeskriptive Statistik ]\n\n\n👉 Data Skills for Reproducible Research\n\nReproducible Workflows\nData visualization\nData wrangling\nIteration & Functions"
+  },
+  {
+    "objectID": "slides/03_import_and_process_data.html#datensatz-importieren",
+    "href": "slides/03_import_and_process_data.html#datensatz-importieren",
+    "title": "3. Sitzung",
+    "section": "Datensatz importieren",
+    "text": "Datensatz importieren\n👉 Download Rstudio Projekt\n\nZZ_rdk-discrimination_2022_Mar_07_1403 aus dem testdata Ordner importieren.\nPractice Trials löschen.\nVariablen auswählen und umbennen.\n\n    - Trial Index\n    - ID\n    - Cue\n    - Direction\n    - Response / RT\n\nAntworten rekodieren."
+  },
+  {
+    "objectID": "slides/03_import_and_process_data.html#mehrere-datensätze-importieren",
+    "href": "slides/03_import_and_process_data.html#mehrere-datensätze-importieren",
+    "title": "3. Sitzung",
+    "section": "Mehrere Datensätze importieren",
+    "text": "Mehrere Datensätze importieren\n\n\n\nAlle .csv Files aus dem data Ordner importieren.\nDieselben Schritte wie oben auf alle Datensätze anwenden."
+  },
+  {
+    "objectID": "slides/03_import_and_process_data.html#anzahl-korrekter-antworten",
+    "href": "slides/03_import_and_process_data.html#anzahl-korrekter-antworten",
+    "title": "3. Sitzung",
+    "section": "Anzahl korrekter Antworten",
+    "text": "Anzahl korrekter Antworten\n\nAccuracy pro Person und pro Bedingung berechnen.\nBedingungen:\n\n   - valid\n   - invalid\n   - neutral"
+  },
+  {
+    "objectID": "slides/03_import_and_process_data.html#probieren-sie-es-selber",
+    "href": "slides/03_import_and_process_data.html#probieren-sie-es-selber",
+    "title": "3. Sitzung",
+    "section": "Probieren Sie es selber!",
+    "text": "Probieren Sie es selber!\n\nLearning by doing! Expertise in R erreicht man nur, wenn man selber ausprobiert.\n\n\nKapitel Daten importieren bearbeiten.\nFragen stellen.\nDaten mit esquisse visualisieren:\n\ninstall.packages(\"esquisse\")\nlibrary(esquisse)\nesquisser()\n\n\n\nNeurowissenschaft im Computerlab FS22"
   }
 ]
