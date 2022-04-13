@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.233">
+<meta name="generator" content="quarto-0.9.242">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Andrew Ellis">
 <meta name="dcterms.date" content="2022-03-29">
@@ -80,7 +80,8 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script><script src="../../site_libs/quarto-nav/headroom.min.js"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script><meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><script src="../../site_libs/quarto-html/quarto.js"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><link href="../..//assets/logo_landing.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link class="quarto-color-scheme" id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
 <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script><link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
@@ -172,6 +173,43 @@
         <li>
     <a class="dropdown-item" href="../../pages/chapters/08_response_times_ii.html">
  <span class="dropdown-text">Reaktionszeiten: II</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-slides" role="button" data-bs-toggle="dropdown" aria-expanded="false">Slides</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-slides">
+<li>
+    <a class="dropdown-item" href="../../slides/01_introduction.html">
+ <span class="dropdown-text">1. Sitzung (22.02.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/02_psychopy.html">
+ <span class="dropdown-text">2. Sitzung (01.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/03_import_and_process_data.html">
+ <span class="dropdown-text">3. Sitzung (08.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/04_process_data.html">
+ <span class="dropdown-text">4. Sitzung (15.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/05_signal_detection.html">
+ <span class="dropdown-text">5. Sitzung (22.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/">
+ <span class="dropdown-text">6. Sitzung (29.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/">
+ <span class="dropdown-text">7. Sitzung (05.04.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/">
+ <span class="dropdown-text">8. Sitzung (12.04.2022)</span></a>
   </li>  
     </ul>
 </li>
@@ -301,7 +339,7 @@ Note
 </section><section id="trials-klassifizieren" class="level2"><h2 class="anchored" data-anchor-id="trials-klassifizieren">Trials klassifizieren</h2>
 <p>Als <code>Hit</code>, <code>Miss</code>, <code>CR</code> und <code>FA</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sdt <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sdt <span class="ot">&lt;-</span> d <span class="sc">|&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">case_when</span>(</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        direction <span class="sc">==</span> <span class="st">"___"</span> <span class="sc">&amp;</span> choice <span class="sc">==</span> <span class="st">"___"</span> <span class="sc">~</span> <span class="st">"___"</span>),</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        ___,</span>
@@ -310,7 +348,7 @@ Note
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">sdt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,362 × 6
    ID     condition cue   direction choice type 
    &lt;fct&gt;  &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;     &lt;fct&gt;  &lt;chr&gt;
@@ -335,7 +373,7 @@ Note
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">sdt_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 170 × 4
 # Groups:   ID, cue [45]
    ID     cue   type      n
@@ -360,7 +398,7 @@ Note
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">sdt_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 45 × 6
 # Groups:   ID, cue [45]
    ID     cue      CR    FA   Hit  Miss
@@ -401,7 +439,7 @@ Note
 </div>
 </section><section id="hit-rate-und-false-alarm-rate-berechnen" class="level2"><h2 class="anchored" data-anchor-id="hit-rate-und-false-alarm-rate-berechnen">Hit Rate und False Alarm Rate berechnen</h2>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sdt_summary <span class="ot">&lt;-</span> sdt_summary <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sdt_summary <span class="ot">&lt;-</span> sdt_summary <span class="sc">|&gt;</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">hit_rate =</span> ___,</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fa_rate =</span> ___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -412,13 +450,13 @@ Note
 </div>
 </section><section id="z-transformation" class="level2"><h2 class="anchored" data-anchor-id="z-transformation">Z-Transformation</h2>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sdt_summary <span class="ot">&lt;-</span> sdt_summary <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sdt_summary <span class="ot">&lt;-</span> sdt_summary <span class="sc">|&gt;</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">zhr =</span> ___,</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">zfa =</span> ___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="sdt-kennzahlen-berechnen" class="level2"><h2 class="anchored" data-anchor-id="sdt-kennzahlen-berechnen">SDT Kennzahlen berechnen</h2>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sdt_summary <span class="ot">&lt;-</span> sdt_summary <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sdt_summary <span class="ot">&lt;-</span> sdt_summary <span class="sc">|&gt;</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">dprime =</span> ___,</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">k =</span> ___,</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">c =</span> ___) <span class="sc">|&gt;</span></span>
@@ -454,7 +492,7 @@ Tip
 </section><section id="visualisieren" class="level2"><h2 class="anchored" data-anchor-id="visualisieren">Visualisieren</h2>
 <div class="cell">
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">SU6460_sdt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 5
 # Groups:   ID, cue [3]
   ID     cue   dprime     k     c
@@ -486,7 +524,7 @@ Tip
 <p>Check <code>levels</code>: <code>right</code> muss die zweite Faktorstufe sein!</p>
 <div class="cell">
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">SU6460</span><span class="op">$</span><span class="va">choice</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] "left"  "right"</code></pre>
 </div>
 </div>
@@ -496,7 +534,7 @@ Tip
                       data <span class="op">=</span> <span class="va">SU6460</span> |&gt; <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">cue</span> <span class="op">==</span> <span class="st">"left"</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">SU6460_glm_k_left</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
 glm(formula = choice ~ direction, family = binomial(link = "probit"), 
@@ -526,7 +564,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
                        data <span class="op">=</span> <span class="va">SU6460</span> |&gt; <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">cue</span> <span class="op">==</span> <span class="st">"right"</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">SU6460_glm_k_right</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
 glm(formula = choice ~ direction, family = binomial(link = "probit"), 
@@ -559,7 +597,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
                        family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span><span class="op">(</span>link <span class="op">=</span> <span class="st">"probit"</span><span class="op">)</span>,
                        data <span class="op">=</span> <span class="va">SU6460</span> |&gt; <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">cue</span> <span class="op">==</span> <span class="st">"left"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">SU6460_glm_c_left</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
 glm(formula = choice ~ dir, family = binomial(link = "probit"), 
@@ -589,7 +627,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
                         data <span class="op">=</span> <span class="va">SU6460</span> |&gt; <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">cue</span> <span class="op">==</span> <span class="st">"right"</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">SU6460_glm_c_right</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
 glm(formula = choice ~ dir, family = binomial(link = "probit"), 

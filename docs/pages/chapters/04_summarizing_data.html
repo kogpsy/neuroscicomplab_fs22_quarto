@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.233">
+<meta name="generator" content="quarto-0.9.242">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Andrew Ellis">
 <meta name="dcterms.date" content="2022-03-15">
@@ -80,7 +80,8 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script><script src="../../site_libs/quarto-nav/headroom.min.js"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script><meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><script src="../../site_libs/quarto-html/quarto.js"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><link href="../..//assets/logo_landing.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link class="quarto-color-scheme" id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
 <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script><link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
@@ -172,6 +173,43 @@
         <li>
     <a class="dropdown-item" href="../../pages/chapters/08_response_times_ii.html">
  <span class="dropdown-text">Reaktionszeiten: II</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-slides" role="button" data-bs-toggle="dropdown" aria-expanded="false">Slides</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-slides">
+<li>
+    <a class="dropdown-item" href="../../slides/01_introduction.html">
+ <span class="dropdown-text">1. Sitzung (22.02.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/02_psychopy.html">
+ <span class="dropdown-text">2. Sitzung (01.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/03_import_and_process_data.html">
+ <span class="dropdown-text">3. Sitzung (08.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/04_process_data.html">
+ <span class="dropdown-text">4. Sitzung (15.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/05_signal_detection.html">
+ <span class="dropdown-text">5. Sitzung (22.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/">
+ <span class="dropdown-text">6. Sitzung (29.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/">
+ <span class="dropdown-text">7. Sitzung (05.04.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/">
+ <span class="dropdown-text">8. Sitzung (12.04.2022)</span></a>
   </li>  
     </ul>
 </li>
@@ -270,7 +308,7 @@ Note
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,440
 Columns: 9
 $ trial     &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…
@@ -288,7 +326,7 @@ $ condition &lt;fct&gt; valid, valid, neutral, neutral, valid, neutral, neutral,
 <section id="pro-versuchsperson" class="level2"><h2 class="anchored" data-anchor-id="pro-versuchsperson">Pro Versuchsperson</h2>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,440 × 9
    trial ID    cue   direction response    rt choice correct condition
    &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;    &lt;dbl&gt; &lt;fct&gt;    
@@ -308,7 +346,7 @@ $ condition &lt;fct&gt; valid, valid, neutral, neutral, valid, neutral, neutral,
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">data</span> |&gt; 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ID</span>, <span class="va">condition</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,440 × 9
 # Groups:   ID, condition [27]
    trial ID    cue   direction response    rt choice correct condition
@@ -335,7 +373,7 @@ $ condition &lt;fct&gt; valid, valid, neutral, neutral, valid, neutral, neutral,
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">accuracy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 27 × 5
 # Groups:   ID [9]
    ID    condition     N ncorrect accuracy
@@ -456,7 +494,7 @@ $ condition &lt;fct&gt; valid, valid, neutral, neutral, valid, neutral, neutral,
                                    na.rm <span class="op">=</span> <span class="cn">FALSE</span>, 
                                    conf.interval <span class="op">=</span> <span class="fl">.95</span><span class="op">)</span>
 <span class="va">dflsum_between</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>  condition  N value       sd       se       ci
 1   pretest 10 47.74 8.598992 2.719240 6.151348
 2  posttest 10 51.43 7.253972 2.293907 5.189179</code></pre>
@@ -498,7 +536,7 @@ $ condition &lt;fct&gt; valid, valid, neutral, neutral, valid, neutral, neutral,
              sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">correct</span><span class="op">)</span>,
              se <span class="op">=</span> <span class="fu">se</span><span class="op">(</span><span class="va">correct</span><span class="op">)</span><span class="op">)</span>
 <span class="va">datasum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 5
   condition     N ccuracy    sd     se
   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
@@ -514,7 +552,7 @@ $ condition &lt;fct&gt; valid, valid, neutral, neutral, valid, neutral, neutral,
                                na.rm <span class="op">=</span> <span class="cn">FALSE</span>,
                                conf.interval <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
 <span class="va">datasum_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>  condition   N   correct        sd         se         ci
 1   invalid 144 0.3888889 0.4891996 0.04076663 0.08058308
 2   neutral 720 0.6291667 0.4833637 0.01801390 0.03536613
@@ -529,7 +567,7 @@ $ condition &lt;fct&gt; valid, valid, neutral, neutral, valid, neutral, neutral,
                                na.rm <span class="op">=</span> <span class="cn">FALSE</span>,
                                conf.interval <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
 <span class="va">datasum_3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>  condition   N   correct        sd         se         ci
 1   invalid 144 0.3888889 0.5773528 0.04811273 0.09510406
 2   neutral 720 0.6291667 0.5726512 0.02134145 0.04189901
@@ -560,7 +598,7 @@ $ condition &lt;fct&gt; valid, valid, neutral, neutral, valid, neutral, neutral,
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">by_subj</span> </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 27 × 5
 # Groups:   ID [9]
    ID    condition  mean median     sd
@@ -639,7 +677,7 @@ $ condition &lt;fct&gt; valid, valid, neutral, neutral, valid, neutral, neutral,
                                na.rm <span class="op">=</span> <span class="cn">FALSE</span>,
                                conf.interval <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
 <span class="va">rtsum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>  condition   N        rt        sd         se         ci
 1   invalid 141 0.7055247 0.2204498 0.01856522 0.03670444
 2   neutral 710 0.7238269 0.2449543 0.00919297 0.01804870

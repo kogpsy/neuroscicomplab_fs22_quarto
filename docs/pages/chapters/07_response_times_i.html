@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.233">
+<meta name="generator" content="quarto-0.9.242">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Andrew Ellis">
 <meta name="dcterms.date" content="2022-04-05">
@@ -80,7 +80,8 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script><script src="../../site_libs/quarto-nav/headroom.min.js"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script><meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><script src="../../site_libs/quarto-html/quarto.js"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><link href="../..//assets/logo_landing.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link class="quarto-color-scheme" id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
 <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script><link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
@@ -172,6 +173,43 @@
         <li>
     <a class="dropdown-item" href="../../pages/chapters/08_response_times_ii.html">
  <span class="dropdown-text">Reaktionszeiten: II</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-slides" role="button" data-bs-toggle="dropdown" aria-expanded="false">Slides</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-slides">
+<li>
+    <a class="dropdown-item" href="../../slides/01_introduction.html">
+ <span class="dropdown-text">1. Sitzung (22.02.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/02_psychopy.html">
+ <span class="dropdown-text">2. Sitzung (01.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/03_import_and_process_data.html">
+ <span class="dropdown-text">3. Sitzung (08.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/04_process_data.html">
+ <span class="dropdown-text">4. Sitzung (15.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/05_signal_detection.html">
+ <span class="dropdown-text">5. Sitzung (22.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/">
+ <span class="dropdown-text">6. Sitzung (29.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/">
+ <span class="dropdown-text">7. Sitzung (05.04.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/">
+ <span class="dropdown-text">8. Sitzung (12.04.2022)</span></a>
   </li>  
     </ul>
 </li>
@@ -268,7 +306,7 @@ Note
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>Rows: 300
 Columns: 2
 $ control &lt;dbl&gt; 700.2404, 1034.3323, 675.8451, 1027.1913, 781.4268, 637.8018, …
@@ -284,7 +322,7 @@ $ adhd    &lt;dbl&gt; 1457.7710, 736.0453, 1230.0827, 995.3828, 763.0127, 737.85
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>Rows: 600
 Columns: 2
 $ group &lt;fct&gt; control, control, control, control, control, control, control, c…
@@ -316,7 +354,7 @@ $ rt    &lt;dbl&gt; 700.2404, 1034.3323, 675.8451, 1027.1913, 781.4268, 637.8018
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">group</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rt</span><span class="op">)</span>,
             sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">rt</span><span class="op">)</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   group    mean    sd
   &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt;
@@ -333,7 +371,7 @@ $ rt    &lt;dbl&gt; 700.2404, 1034.3323, 675.8451, 1027.1913, 781.4268, 637.8018
             q25 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">rt</span>, probs <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span>,
             q75 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">rt</span>, probs <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span><span class="op">)</span> |&gt; 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>IQR <span class="op">=</span> <span class="va">q75</span> <span class="op">-</span> <span class="va">q25</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   group    mean   q25   q75   IQR
   &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -346,7 +384,7 @@ $ rt    &lt;dbl&gt; 700.2404, 1034.3323, 675.8451, 1027.1913, 781.4268, 637.8018
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">group</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">rt</span><span class="op">)</span>,
             IQR <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op">(</span><span class="va">rt</span><span class="op">)</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   group    mean   IQR
   &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt;
@@ -365,7 +403,7 @@ $ rt    &lt;dbl&gt; 700.2404, 1034.3323, 675.8451, 1027.1913, 781.4268, 637.8018
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">by_group</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   group    mean median    sd   IQR
   &lt;fct&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -406,7 +444,7 @@ $ rt    &lt;dbl&gt; 700.2404, 1034.3323, 675.8451, 1027.1913, 781.4268, 637.8018
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">d_quantiles</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 18 × 3
 # Groups:   group [2]
    group      rt quantile
@@ -439,7 +477,7 @@ $ rt    &lt;dbl&gt; 700.2404, 1034.3323, 675.8451, 1027.1913, 781.4268, 637.8018
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">d_quantile_differences</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 3
   quantile control  adhd
      &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
@@ -460,7 +498,7 @@ $ rt    &lt;dbl&gt; 700.2404, 1034.3323, 675.8451, 1027.1913, 781.4268, 637.8018
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">d_quantile_differences</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 4
   quantile control  adhd `control - adhd`
      &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;            &lt;dbl&gt;
@@ -503,7 +541,7 @@ $ rt    &lt;dbl&gt; 700.2404, 1034.3323, 675.8451, 1027.1913, 781.4268, 637.8018
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="fu">rogme</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rogme/man/plot_sf.html">plot_sf</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[[1]]</code></pre>
 </div>
 <div class="cell-output-display">

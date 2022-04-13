@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.233">
+<meta name="generator" content="quarto-0.9.242">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Andrew Ellis">
 <meta name="description" content="Signal Detection Kennzahlen zusammenfassen.">
@@ -79,7 +79,8 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script><script src="../../site_libs/quarto-nav/headroom.min.js"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script><meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><script src="../../site_libs/quarto-html/quarto.js"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><link href="../..//assets/logo_landing.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link class="quarto-color-scheme" id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
 <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script><link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
@@ -171,6 +172,43 @@
         <li>
     <a class="dropdown-item" href="../../pages/chapters/08_response_times_ii.html">
  <span class="dropdown-text">Reaktionszeiten: II</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-slides" role="button" data-bs-toggle="dropdown" aria-expanded="false">Slides</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-slides">
+<li>
+    <a class="dropdown-item" href="../../slides/01_introduction.html">
+ <span class="dropdown-text">1. Sitzung (22.02.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/02_psychopy.html">
+ <span class="dropdown-text">2. Sitzung (01.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/03_import_and_process_data.html">
+ <span class="dropdown-text">3. Sitzung (08.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/04_process_data.html">
+ <span class="dropdown-text">4. Sitzung (15.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/05_signal_detection.html">
+ <span class="dropdown-text">5. Sitzung (22.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/">
+ <span class="dropdown-text">6. Sitzung (29.03.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/">
+ <span class="dropdown-text">7. Sitzung (05.04.2022)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../slides/">
+ <span class="dropdown-text">8. Sitzung (12.04.2022)</span></a>
   </li>  
     </ul>
 </li>
@@ -289,7 +327,7 @@ Note
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">sdt_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 170 × 4
 # Groups:   ID, cue [45]
    ID     cue   type      n
@@ -314,7 +352,7 @@ Note
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">sdt_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 45 × 6
 # Groups:   ID, cue [45]
    ID     cue      CR    FA   Hit  Miss
@@ -355,7 +393,7 @@ Note
 </div>
 </section><section id="hit-rate-und-false-alarm-rate-berechnen" class="level2"><h2 class="anchored" data-anchor-id="hit-rate-und-false-alarm-rate-berechnen">Hit Rate und False Alarm Rate berechnen</h2>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sdt_summary <span class="ot">&lt;-</span> sdt_summary <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sdt_summary <span class="ot">&lt;-</span> sdt_summary <span class="sc">|&gt;</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">hit_rate =</span> ___,</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">fa_rate =</span> ___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -372,7 +410,7 @@ Note
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">sdt_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 45 × 10
 # Groups:   ID, cue [45]
    ID     cue      CR    FA   Hit  Miss hit_rate fa_rate   zhr     zfa
@@ -392,7 +430,7 @@ Note
 </div>
 </section><section id="sdt-kennzahlen-berechnen" class="level2"><h2 class="anchored" data-anchor-id="sdt-kennzahlen-berechnen">SDT Kennzahlen berechnen</h2>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sdt_summary <span class="ot">&lt;-</span> sdt_summary <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sdt_summary <span class="ot">&lt;-</span> sdt_summary <span class="sc">|&gt;</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">dprime =</span> ___,</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">k =</span> ___,</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">c =</span> ___) <span class="sc">|&gt;</span></span>
@@ -406,7 +444,7 @@ Note
 <p>Im finalen Datensatz haben wir nun <code>d'</code>, <code>k</code> und <code>c</code> für jede Person in jeder Bedingung.</p>
 <div class="cell">
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">sdt_final</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 45 × 5
 # Groups:   ID, cue [45]
    ID     cue   dprime     k     c
@@ -470,12 +508,12 @@ Note
 </tbody>
 </table>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>cs <span class="ot">&lt;-</span> sdt_final <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>cs <span class="ot">&lt;-</span> sdt_final <span class="sc">|&gt;</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(ID, cue, c) <span class="sc">|&gt;</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    ___</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dprimes <span class="ot">&lt;-</span> sdt_final <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dprimes <span class="ot">&lt;-</span> sdt_final <span class="sc">|&gt;</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(ID, cue, ___) <span class="sc">|&gt;</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    ___</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>

@@ -197,7 +197,7 @@
  <span class="dropdown-text">4. Sitzung (15.03.2022)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../slides/">
+    <a class="dropdown-item" href="../../slides/05_signal_detection.html">
  <span class="dropdown-text">5. Sitzung (22.03.2022)</span></a>
   </li>  
         <li>
@@ -324,7 +324,7 @@ In Ihrem Rstudio Projekt ist dieses File im Ordner <code>testdata</code> gespeic
 <section id="variablen-überprüfen" class="level3"><h3 class="anchored" data-anchor-id="variablen-überprüfen">Variablen überprüfen</h3>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">testdata</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>Rows: 167
 Columns: 39
 $ cue                                        &lt;chr&gt; "none", "left", "right", "l…
@@ -1015,7 +1015,7 @@ $ frameRate                                  &lt;dbl&gt; 59.9, 59.9, 59.9, 59.9,
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">testdata</span> |&gt; 
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">main_blocks_loop.thisN</span><span class="op">)</span><span class="op">)</span> |&gt;
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"practice_block_loop"</span><span class="op">)</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 160 × 35
    cue   direction main_blocks_loop.thisRepN main_blocks_loop.… main_blocks_loo…
    &lt;chr&gt; &lt;chr&gt;                         &lt;dbl&gt;              &lt;dbl&gt;            &lt;dbl&gt;
@@ -1046,7 +1046,7 @@ $ frameRate                                  &lt;dbl&gt; 59.9, 59.9, 59.9, 59.9,
            <span class="op">-</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"image"</span><span class="op">)</span>,
            <span class="op">-</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"instruction"</span><span class="op">)</span>,
            <span class="op">-</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"feedback"</span><span class="op">)</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 167 × 23
    cue   direction practice_block_loop.thisRe… practice_block_… practice_block_…
    &lt;chr&gt; &lt;chr&gt;                           &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;
@@ -1079,7 +1079,7 @@ $ frameRate                                  &lt;dbl&gt; 59.9, 59.9, 59.9, 59.9,
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">testdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 167 × 23
    cue   direction practice_block_loop.thisRe… practice_block_… practice_block_…
    &lt;chr&gt; &lt;chr&gt;                           &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;
@@ -1114,7 +1114,7 @@ $ frameRate                                  &lt;dbl&gt; 59.9, 59.9, 59.9, 59.9,
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">testdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 167 × 6
    trial ID    cue   direction response     rt
    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;
@@ -1157,7 +1157,7 @@ $ frameRate                                  &lt;dbl&gt; 59.9, 59.9, 59.9, 59.9,
 </section><section id="gruppierungsvariablen" class="level2"><h2 class="anchored" data-anchor-id="gruppierungsvariablen">Gruppierungsvariablen</h2>
 <div class="cell">
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">testdata</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>Rows: 167
 Columns: 9
 $ trial     &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10…
@@ -1177,7 +1177,7 @@ $ correct   &lt;dbl&gt; 0, 0, 1, 1, 1, 1, NA, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">testdata</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>Rows: 167
 Columns: 9
 $ trial     &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10…
@@ -1202,7 +1202,7 @@ $ correct   &lt;dbl&gt; 0, 0, 1, 1, 1, 1, NA, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1
               accuracy2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">correct</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">testaccuracy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 5
   condition     N ncorrect accuracy accuracy2
   &lt;fct&gt;     &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
@@ -1247,7 +1247,7 @@ Probieren Sie die Funktion mit dem einzelnen <code>.csv</code> File von oben.
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">list_of_files</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] "data//JH_rdk-discrimination_2022_Mar_07_1403.csv"   
 [2] "data//NS_rdk-discrimination_2022_Mar_07_1331.csv"   
 [3] "data//rh_rdk-discrimination_2022_Mar_02_1105.csv"   
@@ -1295,7 +1295,7 @@ Probieren Sie die Funktion mit dem einzelnen <code>.csv</code> File von oben.
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,440
 Columns: 8
 $ trial     &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…
@@ -1311,7 +1311,7 @@ $ correct   &lt;dbl&gt; 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 <div class="cell">
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">data</span> |&gt; 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 8
    trial ID    cue   direction response    rt choice correct
    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
@@ -1352,7 +1352,7 @@ $ correct   &lt;dbl&gt; 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 <div class="cell">
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">data</span> |&gt; 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 9
    trial ID    cue   direction response    rt choice correct condition
    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;    
@@ -1385,7 +1385,7 @@ $ correct   &lt;dbl&gt; 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,440
 Columns: 9
 $ trial     &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…
@@ -1407,14 +1407,14 @@ $ condition &lt;fct&gt; valid, valid, neutral, neutral, valid, neutral, neutral,
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>N <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,
               ncorrect <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">correct</span><span class="op">)</span>,
               accuracy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">correct</span><span class="op">)</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stderr">
+<div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'ID'. You can override using the `.groups`
 argument.</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">accuracy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 27 × 5
 # Groups:   ID [9]
    ID    condition     N ncorrect accuracy
