@@ -210,7 +210,7 @@ Selber ausprobieren
 Learning by doing! Expertise in R erreicht man nur, wenn man selber ausprobiert.
 :::
 
-- Kapitel [Daten importieren](../importing-data.html) bearbeiten.
+- Kapitel [Daten importieren](../pages/chapters/02_importing_data.html) bearbeiten.
 
 - Fragen stellen.
 

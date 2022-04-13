@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/index.html</loc>
-    <lastmod>2022-04-13T14:58:36.594Z</lastmod>
+    <lastmod>2022-04-13T15:17:01.145Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/solutions/solution_03.html</loc>
@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/chapters/02_importing_data.html</loc>
-    <lastmod>2022-04-12T14:01:50.070Z</lastmod>
+    <lastmod>2022-04-13T15:24:26.960Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/chapters/06_signal_detection_ii.html</loc>
@@ -78,6 +78,10 @@
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/slides/03_import_and_process_data.html</loc>
-    <lastmod>2022-04-13T15:14:55.996Z</lastmod>
+    <lastmod>2022-04-13T15:23:51.996Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/slides/04_process_data.html</loc>
+    <lastmod>2022-04-13T15:20:56.309Z</lastmod>
   </url>
 </urlset>

@@ -3,8 +3,8 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.9.242">
   <meta name="author" content="Andrew Ellis">
-  <meta name="dcterms.date" content="2022-03-08">
-  <title>Neurowissenschaft Computerlab - 3. Sitzung</title>
+  <meta name="dcterms.date" content="2022-03-15">
+  <title>Neurowissenschaft Computerlab - 4. Sitzung</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -386,11 +386,11 @@
     <div class="slides">
 
 <section id="title-slide" class="center">
-  <h1 class="title">3. Sitzung</h1>
-  <p class="subtitle">Daten importieren und verarbeiten</p>
+  <h1 class="title">4. Sitzung</h1>
+  <p class="subtitle">Daten verarbeiten</p>
   <p class="author">Andrew Ellis</p>
   <p class="institute">Neurowissenschaft Computerlab FS 22</p>
-  <p class="date">2022-03-08</p>
+  <p class="date">2022-03-15</p>
 </section>
 
 <section class="slide level2">
@@ -402,25 +402,20 @@
 </div>
 </div><div class="column" style="width:65%;">
 <div class="topic-text">
-<p>Setting up R/RStudio</p>
+<p>Data cleaning</p>
 </div>
 </div>
 </div>
 </section>
-<section id="set-up-rrstudio" class="slide level2 smaller">
-<h2>Set up R/RStudio</h2>
-<div class="columns">
-<div class="column" style="width:45%;">
-<p>👉 <a href="https://cloud.r-project.org/">Download <strong>R</strong></a></p>
-<p>👉 <a href="https://www.rstudio.com/products/rstudio/download/#download">Download <strong>RStudio</strong></a></p>
-</div><div class="column" style="width:45%;">
+<section id="data-cleaning" class="slide level2 smaller">
+<h2>Data cleaning</h2>
+<p>Nun wollen wir versuchen, einzelne Trials, zu identifizieren, in denen Versuchpersonen nicht aufgepasst haben, oder einfach geraten wurde. In solchen Fällen wäre die Qualität der Daten nicht gut genug.</p>
+<div class="fragment">
+<p>Am häufigsten werden die folgenden beiden Kriterien verwendet, um entweder einzelne Datenpunkte, oder Versuchspersonen, auszuschliessen:</p>
 <ol type="1">
-<li><p>RStudio öffnen</p></li>
-<li><p>RStudio einrichten</p></li>
-<li><p>Packages installieren</p></li>
+<li><p>Versuchspersonen, deren Accuracy &lt; 50% ist.</p></li>
+<li><p>Trials, in denen die Antwort zu schnell oder zu langsam war.</p></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </div>
 </section>
 <section class="slide level2">
@@ -432,33 +427,17 @@
 </div>
 </div><div class="column" style="width:65%;">
 <div class="topic-text">
-<p>R Kenntnisse auffrischen</p>
+<p>Daten zusammenfassen</p>
 </div>
 </div>
 </div>
 </section>
-<section id="r-kenntnisse" class="slide level2 smaller">
-<h2>R Kenntnisse</h2>
-<div class="columns">
-<div class="column" style="width:45%;">
-<p>👉 <a href="https://methodenlehre.github.io/intro-to-rstats">Einführung in R</a></p>
+<section id="daten-zusammenfassen" class="slide level2 smaller">
+<h2>Daten zusammenfassen</h2>
 <ul>
-<li><p>Einführung in RStudio</p></li>
-<li><p>R Sprache</p></li>
-<li><p>Control flow / Funktionen</p></li>
-<li><p>Daten importieren / tidy data / visualisieren</p></li>
-<li><p>Deskriptive Statistik ]</p></li>
+<li>Pro VP / Bedingung</li>
+<li>über VPs aggregieren</li>
 </ul>
-</div><div class="column" style="width:45%;">
-<p>👉 <a href="https://psyteachr.github.io/reprores-v2/index.html">Data Skills for Reproducible Research</a></p>
-<ul>
-<li><p>Reproducible Workflows</p></li>
-<li><p>Data visualization</p></li>
-<li><p>Data wrangling</p></li>
-<li><p>Iteration &amp; Functions</p></li>
-</ul>
-</div>
-</div>
 </section>
 <section class="slide level2">
 
@@ -466,88 +445,6 @@
 <div class="column" style="width:35%;">
 <div class="topic-number">
 <p>3</p>
-</div>
-</div><div class="column" style="width:65%;">
-<div class="topic-text">
-<p>Test Datensatz importieren</p>
-</div>
-</div>
-</div>
-</section>
-<section id="datensatz-importieren" class="slide level2 smaller">
-<h2>Datensatz importieren</h2>
-<p>👉 <a href="../downloadable_files/import-data.zip">Download Rstudio Projekt</a></p>
-<ul>
-<li><p><code>ZZ_rdk-discrimination_2022_Mar_07_1403</code> aus dem <code>testdata</code> Ordner importieren.</p></li>
-<li><p>Practice Trials löschen.</p></li>
-<li><p>Variablen auswählen und umbennen.</p></li>
-</ul>
-<pre><code>    - Trial Index
-    - ID
-    - Cue
-    - Direction
-    - Response / RT</code></pre>
-<ul>
-<li>Antworten rekodieren.</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:35%;">
-<div class="topic-number">
-<p>4</p>
-</div>
-</div><div class="column" style="width:65%;">
-<div class="topic-text">
-<p>Mehrere Datensätze importieren</p>
-</div>
-</div>
-</div>
-</section>
-<section id="mehrere-datensätze-importieren" class="slide level2 smaller">
-<h2>Mehrere Datensätze importieren</h2>
-<div class="columns">
-<div class="column" style="width:45%;">
-<ul>
-<li><p>Alle <code>.csv</code> Files aus dem <code>data</code> Ordner importieren.</p></li>
-<li><p>Dieselben Schritte wie oben auf alle Datensätze anwenden.</p></li>
-</ul>
-</div><div class="column" style="width:45%;">
-<p><img data-src="../assets/images/draw-finished-owl.png"></p>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:35%;">
-<div class="topic-number">
-<p>5</p>
-</div>
-</div><div class="column" style="width:65%;">
-<div class="topic-text">
-<p>Accuracy</p>
-</div>
-</div>
-</div>
-</section>
-<section id="anzahl-korrekter-antworten" class="slide level2 smaller">
-<h2>Anzahl korrekter Antworten</h2>
-<ul>
-<li><p>Accuracy pro Person und pro Bedingung berechnen.</p></li>
-<li><p>Bedingungen:</p></li>
-</ul>
-<pre><code>   - valid
-   - invalid
-   - neutral</code></pre>
-</section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:35%;">
-<div class="topic-number">
-<p>6</p>
 </div>
 </div><div class="column" style="width:65%;">
 <div class="topic-text">
@@ -562,13 +459,11 @@
 <p>Learning by doing! Expertise in R erreicht man nur, wenn man selber ausprobiert.</p>
 </div>
 <ul>
-<li><p>Kapitel <a href="../pages/chapters/02_importing_data.html">Daten importieren</a> bearbeiten.</p></li>
-<li><p>Fragen stellen.</p></li>
-<li><p>Daten mit <code>esquisse</code> visualisieren:</p></li>
+<li>Daten mit <code>esquisse</code> visualisieren:</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">install.packages</span>(<span class="st">"esquisse"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">library</span>(esquisse)</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">esquisser</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">install.packages</span>(<span class="st">"esquisse"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(esquisse)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">esquisser</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 <img src="../assets/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
