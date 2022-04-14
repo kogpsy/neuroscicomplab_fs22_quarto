@@ -7,7 +7,7 @@ format:
   revealjs:
     theme: [simple, ../styles/reveal.scss]
     logo: ../assets/logo.png
-    footer: Neurowissenschaft im Computerlab FS22
+    footer: <a href="/">🏠 Neurowissenschaft im Computerlab FS22</a>
     smaller: true
 date: "2022-03-29"
 ---
