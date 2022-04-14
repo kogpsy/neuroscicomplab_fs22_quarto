@@ -7,6 +7,7 @@
 .discussion {
   border-left: solid 5px rgb(198, 234, 241);
   background-color: rgb(231, 251, 255);
+  margin-top: 50px;
 }
 .discussion:before {
   content: "🤔";
@@ -14,7 +15,8 @@
   margin-bottom: 10px;
 }
 .reveal h2 {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  margin-top: -10px;
 }
 .your-turn {
   border-left: solid 5px #f4dbb3;
@@ -42,5 +44,5 @@
 }
 
 .width-75 {
-  width: 80%;
+  width: 75%;
 }
