@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/slides/04_process_data.html</loc>
-    <lastmod>2022-04-14T07:56:54.178Z</lastmod>
+    <lastmod>2022-04-14T08:08:05.219Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/slides/01_introduction.html</loc>
@@ -10,7 +10,7 @@
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/slides/05_signal_detection.html</loc>
-    <lastmod>2022-04-14T07:57:21.367Z</lastmod>
+    <lastmod>2022-04-14T08:08:06.907Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/slides/02_psychopy.html</loc>
@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/index.html</loc>
-    <lastmod>2022-04-14T07:59:35.871Z</lastmod>
+    <lastmod>2022-04-14T09:08:32.814Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/solutions/solution_03.html</loc>
@@ -66,7 +66,7 @@
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/chapters/08_response_times_ii.html</loc>
-    <lastmod>2022-04-13T16:27:28.031Z</lastmod>
+    <lastmod>2022-04-14T09:35:03.669Z</lastmod>
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/pages/chapters/03_data_cleaning.html</loc>
@@ -90,6 +90,14 @@
   </url>
   <url>
     <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/slides/06_signal_detection_examples.html</loc>
-    <lastmod>2022-04-14T07:59:38.986Z</lastmod>
+    <lastmod>2022-04-14T08:11:49.884Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/slides/07_response_times.html</loc>
+    <lastmod>2022-04-14T09:08:27.334Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kogpsy.github.io/neuroscicomplab_fs22_quarto/slides/08_response_times_ii.html</loc>
+    <lastmod>2022-04-14T09:52:20.551Z</lastmod>
   </url>
 </urlset>

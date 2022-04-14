@@ -3,8 +3,8 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.9.242">
   <meta name="author" content="Andrew Ellis">
-  <meta name="dcterms.date" content="2022-03-22">
-  <title>Neurowissenschaft Computerlab - 5. Sitzung</title>
+  <meta name="dcterms.date" content="2022-04-05">
+  <title>Neurowissenschaft Computerlab - 7. Sitzung</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -386,15 +386,18 @@
     <div class="slides">
 
 <section id="title-slide" class="center">
-  <h1 class="title">5. Sitzung</h1>
-  <p class="subtitle">Signal Detection Theory</p>
+  <h1 class="title">7. Sitzung</h1>
+  <p class="subtitle">Response Times</p>
   <p class="author">Andrew Ellis</p>
   <p class="institute">Neurowissenschaft Computerlab FS 22</p>
-  <p class="date">2022-03-22</p>
+  <p class="date">2022-04-05</p>
 </section>
 
 <section class="slide level2">
 
+<div class="cell">
+
+</div>
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="topic-number">
@@ -402,108 +405,73 @@
 </div>
 </div><div class="column" style="width:65%;">
 <div class="topic-text">
-<p>Signal Detection Theory</p>
+<p>What are response times?</p>
 </div>
 </div>
 </div>
 </section>
-<section id="signal-detection-theory" class="slide level2">
-<h2>Signal detection theory</h2>
-<ul>
-<li><p>What happpens when a person must whether or not an event has occured, using information that insufficient to determine the answer?</p></li>
-<li><p>Signal detection theory is a widely-used method for analyzing this type of situation and of separating characteristics of the signal from those of the person who is detecting it.</p></li>
-<li><p>We can begin to investigate how information is used to guide a decision.</p></li>
-</ul>
-</section>
-<section id="signal-detection-theory-1" class="slide level2 even-smaller">
-<h2>Signal detection theory</h2>
+<section id="what-are-response-times" class="slide level2">
+<h2>What are Response Times?</h2>
 <div class="columns">
-<div class="column" style="width:35%;">
-<p><strong>What is a decision?</strong></p>
+<div class="column" style="width:45%;">
+<p><img data-src="../assets/images/time-taken-to-complete.png"></p>
+</div><div class="column" style="width:45%;">
+<p>Typical distribution of response times.</p>
 <ul>
-<li><p>A doctor is examining a patient and trying to make a diagnosis.</p></li>
-<li><p>A witness to a crime is asked to identify a suspect. Was this person present at the time of the crime or not?</p></li>
-<li><p>Purchase decision, gambling decisions, perceptual decisions, etc.</p></li>
+<li><p>Time taken to complete a task.</p></li>
+<li><p>Typically, <em>some</em> observed RTs are not a result of the <em>process of interest</em>,but <em>contaminants</em>. Luce (1986) demonstrated that genuine RTs have a minimum value of <span class="math inline">\(&gt; 100\)</span> ms: the time needed for physiological processes (stimulus perception, motor responses).</p></li>
 </ul>
-</div><div class="column" style="width:55%;">
-<p><strong>Binary choice</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th><strong>Signal</strong></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Response</strong></td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td>——–</td>
-<td>————–</td>
-<td>———————</td>
-</tr>
-<tr class="odd">
-<td>Yes</td>
-<td>Hit</td>
-<td>False alarm (FA)</td>
-</tr>
-<tr class="even">
-<td>No</td>
-<td>Miss</td>
-<td>Correct rejection (CR)</td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
+<p>Whelan, R. (2008). Effective Analysis of Reaction Time Data. The Psychological Record, 58(3), 475–482. https://doi.org/10.1007/BF03395630</p>
 </section>
-<section id="signal-detection-theory-2" class="slide level2">
-<h2>Signal detection theory</h2>
+<section class="slide level2">
+
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Assumptions of SDT</a></li><li><a href="#tabset-1-2">Graphical representation</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Simulate data</a></li><li><a href="#tabset-1-2">Code for figure</a></li><li><a href="#tabset-1-3">Figure</a></li><li><a href="#tabset-1-4">Figure with contaminants</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<p><strong>The key assumptions of SDT</strong></p>
-<ul>
-<li><p>Separate representation and decision-making.</p></li>
-<li><p>Signal and noise trials can be represented as values along a uni-dimensional “strength” construct.</p></li>
-<li><p>Both types trials produce Gaussian random variables that represent strength.</p></li>
-<li><p>Both variances are assumed to be the same.</p></li>
-<li><p>The decision-making assumption of is that yes and no responses are produced by comparing the strength of the current trial to a fixed criterion. If the strength exceeds the criterion a “yes” response is made, otherwise a “no” response is made. ]</p></li>
-</ul>
+<div class="larger">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">set.seed</span>(<span class="dv">37</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>d <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">rt =</span> brms<span class="sc">::</span><span class="fu">rexgaussian</span>(<span class="at">n =</span> <span class="fl">1e3</span>,</span>
+<span id="cb1-3"><a href="#cb1-3"></a>                                   <span class="at">mu =</span> <span class="dv">400</span>,</span>
+<span id="cb1-4"><a href="#cb1-4"></a>                                   <span class="at">sigma =</span> <span class="dv">50</span>,</span>
+<span id="cb1-5"><a href="#cb1-5"></a>                                   <span class="at">beta =</span> <span class="dv">150</span>),</span>
+<span id="cb1-6"><a href="#cb1-6"></a>            <span class="at">contaminant =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 </div>
 <div id="tabset-1-2">
-<div class="columns">
-<div class="column" style="width:55%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../assets/images/Lee-Wagenmakers-SDT.png"></p>
-<p></p><figcaption aria-hidden="true">Equal-variance Signal Detection Model</figcaption><p></p>
-</figure>
+<div class="larger">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>d <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(rt)) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), </span>
+<span id="cb2-4"><a href="#cb2-4"></a>                 <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"white"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5"></a>                 <span class="at">binwidth =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">geom_density</span>(<span class="at">lwd =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="dv">4</span>,</span>
+<span id="cb2-7"><a href="#cb2-7"></a>               <span class="at">fill =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="fu">xlab</span>(<span class="st">"Response time [ms]"</span>) <span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1500</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="tabset-1-3">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="07_response_times_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-1-4">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="07_response_times_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-</section>
-<section id="c-and-d" class="slide level2">
-<h2><code>c</code> and <code>d'</code></h2>
-<div class="columns">
-<div class="column" style="width:35%;">
-<p><img data-src="../assets/images/Lee-Wagenmakers-SDT.png"></p>
-</div>
-</div>
-<div class="even-even-smaller">
-<ul>
-<li><p>The mean of the signal distribution is <code>d'</code>. This makes <code>d'</code> a measure of the discriminability of the signal trials from the noise trials – it corresponds to the distance between the two distributions.</p></li>
-<li><p>The strength value <code>d/2</code> is special, because it is the criterion value that maximizes the probability of a correct classification when signal and noise trials are equally likely to occur.</p></li>
-<li><p><code>c</code> a measure of bias, because it corresponds to how different the actual criterion is from the unbiased one. Positive values of c correspond to a bias towards saying no, and so to an increase in correct rejections at the expense of an increase in misses. Negative values of c correspond to a bias towards saying yes, and so to an increase in hits at the expense of an increase in false alarms.</p></li>
-</ul>
 </div>
 </section>
 <section class="slide level2">
@@ -515,72 +483,51 @@
 </div>
 </div><div class="column" style="width:65%;">
 <div class="topic-text">
-<p>Computing Signal Detection Measures in R</p>
+<p>What can response times tell us about the brain?</p>
 </div>
 </div>
 </div>
 </section>
-<section id="computing-sdt-measures-in-r" class="slide level2">
-<h2>Computing SDT Measures in R</h2>
-<div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Distribution function: code</a></li><li><a href="#tabset-2-2">Distribution function: figure</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">by =</span> <span class="fl">0.1</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x)) <span class="sc">+</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> pnorm, <span class="at">colour =</span> <span class="st">"steelblue3"</span>, </span>
-<span id="cb1-5"><a href="#cb1-5"></a>                  <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>),</span>
-<span id="cb1-6"><a href="#cb1-6"></a>                  <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Probability"</span>, <span class="at">x =</span> <span class="st">"Z Score"</span>) <span class="sc">+</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">3.5</span>, <span class="fl">3.5</span>), <span class="at">breaks =</span> <span class="sc">-</span><span class="dv">3</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb1-10"><a href="#cb1-10"></a>  <span class="fu">ggtitle</span>(<span class="st">"Cumulative distribution function / pnorm()"</span>) <span class="sc">+</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>  <span class="fu">theme_linedraw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="tadpoles" class="slide level2">
+<h2>Tadpoles</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><img data-src="../assets/images/tadpole.png"></p>
+</div><div class="column" style="width:45%;">
+<p><img data-src="../assets/images/tadpole-2.png"></p>
 </div>
 </div>
-<div id="tabset-2-2">
-<div class="width-75">
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="05_signal_detection_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
-</div>
-</div>
-<p>Cumulative distribution function: <code>pnorm()</code></p>
-</div>
-</div>
-</div>
+<div class="even-even-smaller">
+<p>Roberts, A., Borisyuk, R., Buhl, E., Ferrario, A., Koutsikou, S., Li, W.-C., &amp; Soffe, S. R. (2019). The decision to move: Response times, neuronal circuits and sensory memory in a simple vertebrate. Proceedings of the Royal Society B: Biological Sciences, 286(1899), 20190297. https://doi.org/10.1098/rspb.2019.0297</p>
 </div>
 </section>
-<section class="slide level2">
-
-<div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Quantile function: code</a></li><li><a href="#tabset-3-2">Quantile function: figure</a></li></ul>
-<div class="tab-content">
-<div id="tabset-3-1">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.01</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x)) <span class="sc">+</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> qnorm, <span class="at">colour =</span> <span class="st">"steelblue3"</span>, </span>
-<span id="cb2-4"><a href="#cb2-4"></a>                  <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>),</span>
-<span id="cb2-5"><a href="#cb2-5"></a>                  <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Probability"</span>, <span class="at">y =</span> <span class="st">"Z Score"</span>) <span class="sc">+</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">3.5</span>, <span class="fl">3.5</span>), <span class="at">breaks =</span> <span class="sc">-</span><span class="dv">3</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb2-9"><a href="#cb2-9"></a>  <span class="fu">ggtitle</span>(<span class="st">"Probit function / quantile function / inverse cdf / qnorm()"</span>) <span class="sc">+</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>  <span class="fu">theme_linedraw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="adhd" class="slide level2">
+<h2>ADHD</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="even-even-smaller">
+<ul>
+<li><p>Performance variability is the essence of ADHD.</p></li>
+<li><p>Children with ADHD demonstrate greater RT variability than nonclinical controls on speeded RT tasks.</p></li>
+</ul>
+<blockquote>
+<p>Response variability is related to a distributed brain network including frontal lobes (implicated in the pathophysiology of ADHD).</p>
+</blockquote>
+<ul>
+<li>Traditional RT measures (sample mean and standard deviation) showed that children with ADHD were slower and more variable in responding than controls.</li>
+</ul>
+</div>
+</div><div class="column" style="width:48%;">
+<div class="even-even-smaller">
+<ul>
+<li>Children with ADHD had a greater number of RTs beyond their mean performance than the control group. Were not generally slower but were prone to attentional lapses.</li>
+</ul>
+<p><img data-src="../assets/images/adhd.png"></p>
 </div>
 </div>
-<div id="tabset-3-2">
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="05_signal_detection_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
 </div>
-</div>
-<p>Probit function / quantile function / inverse cdf: <code>qnorm()</code></p>
-</div>
-</div>
+<div class="even-even-smaller">
+<p>Hervey, A. S., Epstein, J. N., Curry, J. F., Tonev, S., Eugene Arnold, L., Keith Conners, C., Hinshaw, S. P., Swanson, J. M., &amp; Hechtman, L. (2006). Reaction Time Distribution Analysis of Neuropsychological Performance in an ADHD Sample. <em>Child Neuropsychology</em>, <em>12</em>(2), 125–140. <a href="https://doi.org/10.1080/09297040500499081">https://doi.org/10.1080/09297040500499081</a></p>
 </div>
 </section>
 <section class="slide level2">
@@ -592,27 +539,64 @@
 </div>
 </div><div class="column" style="width:65%;">
 <div class="topic-text">
-<p>Using Signal Detection to Analyze Data in R</p>
+<p>How can we analyze response times?</p>
 </div>
 </div>
 </div>
 </section>
-<section id="using-signal-detection-to-analyze-data-in-r" class="slide level2">
-<h2>Using Signal Detection to Analyze Data in R</h2>
-<p>We will look at an example using data from a recognition memory test.</p>
+<section id="central-tendency-mean" class="slide level2">
+<h2>Central tendency: Mean</h2>
 <ul>
-<li><p>Subjects first learn words (study phase).</p></li>
-<li><p>In the test phase, they are presented with words that were on the list, and with new words.</p></li>
-<li><p>Subjects have to classify words into</p>
-<ul>
-<li><code>old</code> (yes, this was on the list)</li>
-<li><code>new</code> (no, this wasn’t on the list)</li>
-</ul></li>
-<li><p>These kind of data are usually analyzed using a Signal Detection model.</p></li>
+<li><p>Most common method of analyzing RT data is to report a central tendency parameter (e.g., the mean or median) and a dispersion parameter (e.g., the standard deviation). The mean difference in RT across conditions is then often analyzed by using ANOVA.</p></li>
+<li><p>Using hypothesis tests on data that are skewed, contain outliers, are heteroscedastic, or have a combination of these characteristics (raw RT data typically have at least the first two) reduces the power of these tests and can result in a failure to detect a real difference between conditions (Wilcox, 1998).</p></li>
+<li><p>Neither the mean nor standard deviation are said to be <em>robust</em> measures. That is, the mean is not reflective of the typical response if the distribution is skewed, because the mean is distorted in the direction of the skew.</p></li>
 </ul>
+</section>
+<section id="central-tendency-median" class="slide level2">
+<h2>Central tendency: Median</h2>
+<ul>
+<li><p>Many researchers report the median RT as a central tendency parameter, because it is less susceptible to departures from normality (i.e., robust). The interquartile range (IQR, the range between the third and first quartiles) is a robust method of estimating the dispersion.</p></li>
+<li><p>A difficulty with using the median is that unlike the sample mean, it is a <em>biased</em> estimator of the population median when the population is skewed (a biased estimator does not, on average, equal the value of the parameter or function that it estimates).</p></li>
+<li><p>The bias becomes more extreme as the sample size becomes smaller (Miller, 1988) and thus the median is more likely to be overestimated in the condition with fewer trials.</p></li>
+</ul>
+</section>
+<section id="beyond-mean-differences" class="slide level2">
+<h2>Beyond mean differences</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li>Most analyses of RT data are conducted by using the statistical techniques with which psychologists are most familiar, such as analysis of variance (ANOVA) on the sample mean. Unfortunately, these methods are usually inappropriate for RT data, because they have little power to detect genuine differences in RT between conditions.</li>
+</ul>
+</div><div class="column" style="width:58%;">
+<p><img data-src="../assets/images/rousselet.png"></p>
+</div>
+</div>
+<div class="even-even-smaller">
+<p>Rousselet, G. A., Pernet, C. R., &amp; Wilcox, R. R. (2017). Beyond differences in means: Robust graphical methods to compare two groups in neuroscience. <em>European Journal of Neuroscience</em>, <em>46</em>(2), 1738–1748. [https://doi.org/10.1111/ejn.13610](https://doi.org/10.1111/</p>
+</div>
+</section>
+<section id="beyond-mean-differences-1" class="slide level2">
+<h2>Beyond mean differences</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p>Deciles</p>
+<p><img data-src="../assets/images/shiftfun-1.png"></p>
+</div><div class="column" style="width:48%;">
+<p>Shift function</p>
+<p><img data-src="../assets/images/shiftfun-2.png"></p>
+</div>
+</div>
+<ul>
+<li><p>For each decile, the shift function illustrates by how much one distribution needs to be shifted to match another one.</p></li>
+<li><p>In our example, we illustrate by how much we need to shift deciles from group 2 to match deciles from group 1.</p></li>
+</ul>
+</section>
+<section id="beyond-mean-differences-2" class="slide level2">
+<h2>Beyond mean differences</h2>
+<p><img data-src="../assets/images/shiftfun-3.png"></p>
 
-
-<img src="../assets/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<p><img src="../assets/logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="../">🏠 Neurowissenschaft im Computerlab FS22</a></p>
 </div>
 </section>

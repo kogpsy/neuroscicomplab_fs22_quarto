@@ -18,7 +18,7 @@
     "href": "slides/04_process_data.html#probieren-sie-es-selber",
     "title": "4. Sitzung",
     "section": "Probieren Sie es selber!",
-    "text": "Probieren Sie es selber!\n\nLearning by doing! Expertise in R erreicht man nur, wenn man selber ausprobiert.\n\n\nDaten mit esquisse visualisieren:\n\ninstall.packages(\"esquisse\")\nlibrary(esquisse)\nesquisser()\n\n\n\nNeurowissenschaft im Computerlab FS22"
+    "text": "Probieren Sie es selber!\n\nLearning by doing! Expertise in R erreicht man nur, wenn man selber ausprobiert.\n\n\nDaten mit esquisse visualisieren:\n\ninstall.packages(\"esquisse\")\nlibrary(esquisse)\nesquisser()\n\n\n\n🏠 Neurowissenschaft im Computerlab FS22"
   },
   {
     "objectID": "slides/01_introduction.html#model-based-cognitive-neuroscience",
@@ -123,7 +123,7 @@
     "href": "slides/05_signal_detection.html#using-signal-detection-to-analyze-data-in-r",
     "title": "5. Sitzung",
     "section": "Using Signal Detection to Analyze Data in R",
-    "text": "Using Signal Detection to Analyze Data in R\nWe will look at an example using data from a recognition memory test.\n\nSubjects first learn words (study phase).\nIn the test phase, they are presented with words that were on the list, and with new words.\nSubjects have to classify words into\n\nold (yes, this was on the list)\nnew (no, this wasn’t on the list)\n\nThese kind of data are usually analyzed using a Signal Detection model.\n\n\n\n\nNeurowissenschaft im Computerlab FS22"
+    "text": "Using Signal Detection to Analyze Data in R\nWe will look at an example using data from a recognition memory test.\n\nSubjects first learn words (study phase).\nIn the test phase, they are presented with words that were on the list, and with new words.\nSubjects have to classify words into\n\nold (yes, this was on the list)\nnew (no, this wasn’t on the list)\n\nThese kind of data are usually analyzed using a Signal Detection model.\n\n\n\n\n🏠 Neurowissenschaft im Computerlab FS22"
   },
   {
     "objectID": "slides/02_psychopy.html#bias-rdk-experiment",
@@ -732,6 +732,111 @@
     "href": "slides/06_signal_detection_examples.html#cognitive-fatigue-1",
     "title": "6. Sitzung",
     "section": "Cognitive Fatigue",
-    "text": "Cognitive Fatigue\n\n\n\n\n\n\n\n\n\n\n\n\nNeurowissenschaft im Computerlab FS22"
+    "text": "Cognitive Fatigue\n\n\n\n\n\n\n\n\n\n\n\n\n🏠 Neurowissenschaft im Computerlab FS22"
+  },
+  {
+    "objectID": "slides/07_response_times.html#what-are-response-times",
+    "href": "slides/07_response_times.html#what-are-response-times",
+    "title": "7. Sitzung",
+    "section": "What are Response Times?",
+    "text": "What are Response Times?\n\n\n\n\nTypical distribution of response times.\n\nTime taken to complete a task.\nTypically, some observed RTs are not a result of the process of interest,but contaminants. Luce (1986) demonstrated that genuine RTs have a minimum value of \\(> 100\\) ms: the time needed for physiological processes (stimulus perception, motor responses).\n\n\n\nWhelan, R. (2008). Effective Analysis of Reaction Time Data. The Psychological Record, 58(3), 475–482. https://doi.org/10.1007/BF03395630"
+  },
+  {
+    "objectID": "slides/07_response_times.html#tadpoles",
+    "href": "slides/07_response_times.html#tadpoles",
+    "title": "7. Sitzung",
+    "section": "Tadpoles",
+    "text": "Tadpoles\n\n\n\n\n\n\n\n\nRoberts, A., Borisyuk, R., Buhl, E., Ferrario, A., Koutsikou, S., Li, W.-C., & Soffe, S. R. (2019). The decision to move: Response times, neuronal circuits and sensory memory in a simple vertebrate. Proceedings of the Royal Society B: Biological Sciences, 286(1899), 20190297. https://doi.org/10.1098/rspb.2019.0297"
+  },
+  {
+    "objectID": "slides/07_response_times.html#adhd",
+    "href": "slides/07_response_times.html#adhd",
+    "title": "7. Sitzung",
+    "section": "ADHD",
+    "text": "ADHD\n\n\n\n\nPerformance variability is the essence of ADHD.\nChildren with ADHD demonstrate greater RT variability than nonclinical controls on speeded RT tasks.\n\n\nResponse variability is related to a distributed brain network including frontal lobes (implicated in the pathophysiology of ADHD).\n\n\nTraditional RT measures (sample mean and standard deviation) showed that children with ADHD were slower and more variable in responding than controls.\n\n\n\n\n\nChildren with ADHD had a greater number of RTs beyond their mean performance than the control group. Were not generally slower but were prone to attentional lapses.\n\n\n\n\n\n\nHervey, A. S., Epstein, J. N., Curry, J. F., Tonev, S., Eugene Arnold, L., Keith Conners, C., Hinshaw, S. P., Swanson, J. M., & Hechtman, L. (2006). Reaction Time Distribution Analysis of Neuropsychological Performance in an ADHD Sample. Child Neuropsychology, 12(2), 125–140. https://doi.org/10.1080/09297040500499081"
+  },
+  {
+    "objectID": "slides/07_response_times.html#central-tendency-mean",
+    "href": "slides/07_response_times.html#central-tendency-mean",
+    "title": "7. Sitzung",
+    "section": "Central tendency: Mean",
+    "text": "Central tendency: Mean\n\nMost common method of analyzing RT data is to report a central tendency parameter (e.g., the mean or median) and a dispersion parameter (e.g., the standard deviation). The mean difference in RT across conditions is then often analyzed by using ANOVA.\nUsing hypothesis tests on data that are skewed, contain outliers, are heteroscedastic, or have a combination of these characteristics (raw RT data typically have at least the first two) reduces the power of these tests and can result in a failure to detect a real difference between conditions (Wilcox, 1998).\nNeither the mean nor standard deviation are said to be robust measures. That is, the mean is not reflective of the typical response if the distribution is skewed, because the mean is distorted in the direction of the skew."
+  },
+  {
+    "objectID": "slides/07_response_times.html#central-tendency-median",
+    "href": "slides/07_response_times.html#central-tendency-median",
+    "title": "7. Sitzung",
+    "section": "Central tendency: Median",
+    "text": "Central tendency: Median\n\nMany researchers report the median RT as a central tendency parameter, because it is less susceptible to departures from normality (i.e., robust). The interquartile range (IQR, the range between the third and first quartiles) is a robust method of estimating the dispersion.\nA difficulty with using the median is that unlike the sample mean, it is a biased estimator of the population median when the population is skewed (a biased estimator does not, on average, equal the value of the parameter or function that it estimates).\nThe bias becomes more extreme as the sample size becomes smaller (Miller, 1988) and thus the median is more likely to be overestimated in the condition with fewer trials."
+  },
+  {
+    "objectID": "slides/07_response_times.html#beyond-mean-differences",
+    "href": "slides/07_response_times.html#beyond-mean-differences",
+    "title": "7. Sitzung",
+    "section": "Beyond mean differences",
+    "text": "Beyond mean differences\n\n\n\nMost analyses of RT data are conducted by using the statistical techniques with which psychologists are most familiar, such as analysis of variance (ANOVA) on the sample mean. Unfortunately, these methods are usually inappropriate for RT data, because they have little power to detect genuine differences in RT between conditions.\n\n\n\n\n\n\nRousselet, G. A., Pernet, C. R., & Wilcox, R. R. (2017). Beyond differences in means: Robust graphical methods to compare two groups in neuroscience. European Journal of Neuroscience, 46(2), 1738–1748. [https://doi.org/10.1111/ejn.13610](https://doi.org/10.1111/"
+  },
+  {
+    "objectID": "slides/07_response_times.html#beyond-mean-differences-1",
+    "href": "slides/07_response_times.html#beyond-mean-differences-1",
+    "title": "7. Sitzung",
+    "section": "Beyond mean differences",
+    "text": "Beyond mean differences\n\n\nDeciles\n\n\nShift function\n\n\n\n\nFor each decile, the shift function illustrates by how much one distribution needs to be shifted to match another one.\nIn our example, we illustrate by how much we need to shift deciles from group 2 to match deciles from group 1."
+  },
+  {
+    "objectID": "slides/07_response_times.html#beyond-mean-differences-2",
+    "href": "slides/07_response_times.html#beyond-mean-differences-2",
+    "title": "7. Sitzung",
+    "section": "Beyond mean differences",
+    "text": "Beyond mean differences\n\n\n\n\n🏠 Neurowissenschaft im Computerlab FS22"
+  },
+  {
+    "objectID": "slides/08_response_times_ii.html#adhd-response-time-variability",
+    "href": "slides/08_response_times_ii.html#adhd-response-time-variability",
+    "title": "8. Sitzung",
+    "section": "ADHD: Response Time Variability",
+    "text": "ADHD: Response Time Variability\n\nChildren with ADHD show cognitive impairments in attention, inhibitory control, and working memory compared with typically-developing children.\nNo specific cognitive impairment is universal across patients with ADHD. One of the more consistent findings in the ADHD neuropsychology literature is increased reaction time variability (RTV), also known as intra-individual variability, on computerized tasks.\nChildren with ADHD have also been shown to be less able to deactivate the DMN than controls, and this inability to deactivate the DMN has been directly related to RTV.\nDoes RTV reflect a single construct or process? The vast majority of studies have used a reaction time standard deviation (RTSD)."
+  },
+  {
+    "objectID": "slides/08_response_times_ii.html#next-sessions",
+    "href": "slides/08_response_times_ii.html#next-sessions",
+    "title": "8. Sitzung",
+    "section": "Next sessions",
+    "text": "Next sessions\n\nEvidence accumulation\nBayesian data analysis\nIs the brain Bayesian?"
+  },
+  {
+    "objectID": "slides/08_response_times_ii.html#facilitation",
+    "href": "slides/08_response_times_ii.html#facilitation",
+    "title": "8. Sitzung",
+    "section": "Facilitation",
+    "text": "Facilitation\n\nStroop task vs Simon task\nFacilitation effects in both task.\nStroop effects are smallest for fast responses and increase as responses slow.\nSimon effects are largest for fast responses but decrease, and even reverse, as responses slow (see DEMO).\n\nPratte, M. S., Rouder, J. N., Morey, R. D., & Feng, C. (2010). Exploring the differences in distributional properties between Stroop and Simon effects using delta plots. Attention, Perception, & Psychophysics, 72(7), 2013–2025. https://doi.org/10.3758/APP.72.7.2013"
+  },
+  {
+    "objectID": "slides/08_response_times_ii.html#experimental-manipulations",
+    "href": "slides/08_response_times_ii.html#experimental-manipulations",
+    "title": "8. Sitzung",
+    "section": "Experimental manipulations",
+    "text": "Experimental manipulations\n\n\n\naffects most strongly slow behavioural responses, but with limited effects on fast responses.\naffects all responses, fast and slow, similarly.\nhas stronger effects on fast responses, and weaker ones for slow responses.\n\n\n\n\n\nDistribution analysis provides much stronger constraints on the underlying cognitive architecture than comparisons limited to e.g. mean or median reaction times across participants."
+  },
+  {
+    "objectID": "slides/08_response_times_ii.html#shift-function-independent-groups",
+    "href": "slides/08_response_times_ii.html#shift-function-independent-groups",
+    "title": "8. Sitzung",
+    "section": "Shift Function: Independent Groups",
+    "text": "Shift Function: Independent Groups\n\nUniform shiftShift functionPlot shift function\n\n\n\n\n\n\n\n\n\n\n\nout <- shifthd_pbci(df, nboot = 200, adj_ci = FALSE)\np <- plot_sf(out, plot_theme = 1)[[1]] + \n     theme(axis.text = element_text(size = 16, colour=\"black\"))"
+  },
+  {
+    "objectID": "slides/08_response_times_ii.html#hierarchical-shift-function",
+    "href": "slides/08_response_times_ii.html#hierarchical-shift-function",
+    "title": "8. Sitzung",
+    "section": "Hierarchical Shift Function",
+    "text": "Hierarchical Shift Function\n\nquantiles are computed for the distribution of measurements from each condition and each participant.\nthe quantiles are subtracted in each participant.\na trimmed mean is computed across participants for each quantile.\nConfidence intervals are computed using the percentile bootstrap."
+  },
+  {
+    "objectID": "slides/08_response_times_ii.html#hierarchical-shift-function-1",
+    "href": "slides/08_response_times_ii.html#hierarchical-shift-function-1",
+    "title": "8. Sitzung",
+    "section": "Hierarchical Shift Function",
+    "text": "Hierarchical Shift Function\n\n\n\n\nShift functionPlot shift functionStochastic dominance\n\n\n\n\nout <- hsf(df, rt ~ cond + id)\n\n\n\n\n\n\np <- plot_hsf(out)\np\n\n\n\n\n\n\n\nParticipants with all quantile differences > 0\n\nnq <- length(out$quantiles)\npdmt0 <- apply(out$individual_sf > 0, 2, sum)\nprint(paste0('In ',sum(pdmt0 == nq),' participants (',round(100 * sum(pdmt0 == nq) / np, digits = 1),'%), all quantile differences are more than to zero'))\n\n[1] \"In 0 participants (0%), all quantile differences are more than to zero\"\n\n\nParticipants with all quantile differences < 0\n\npdlt0 <- apply(out$individual_sf < 0, 2, sum)\nprint(paste0('In ',sum(pdlt0 == nq),' participants (',round(100 * sum(pdlt0 == nq) / np, digits = 1),'%), all quantile differences are less than to zero'))\n\n[1] \"In 22 participants (73.3%), all quantile differences are less than to zero\"\n\n\n\n\n\n\n\n\n🏠 Neurowissenschaft im Computerlab FS22"
   }
 ]
