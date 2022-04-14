@@ -41,9 +41,9 @@ website:
           - text: "6. Sitzung (29.03.2022)"
             file: slides/06_signal_detection_examples.qmd
           - text: "7. Sitzung (05.04.2022)"
-            file: slides/
+            file: slides/07_response_times.qmd
           - text: "8. Sitzung (12.04.2022)"
-            file: slides/
+            file: slides/08_response_times_ii.qmd
       - text: Übungen
         menu:
           - pages/exercises/exercise_01.qmd
