@@ -42,6 +42,10 @@ Contains the rendered website and is served by GitHub Pages.
 
 Contains all articles / web pages. Articles reagarding course administration are located under `admin`, articles reagarding course content are located under `chapters` and exercise related articles are located under `exercises`.
 
+**`slides` directory**
+
+Contains slides for the live sessions.
+
 **`styles` directory**
 
 Contains style sheets which customize the (light and dark) themes.
