@@ -326,7 +326,42 @@
     "href": "slides/08_response_times_ii.html#hierarchical-shift-function-1",
     "title": "8. Sitzung",
     "section": "Hierarchical Shift Function",
-    "text": "Hierarchical Shift Function\n\n\n\n\nShift functionPlot shift functionStochastic dominance\n\n\n\n\nout <- hsf(df, rt ~ cond + id)\n\n\n\n\n\n\np <- plot_hsf(out)\np\n\n\n\n\n\n\n\nParticipants with all quantile differences > 0\n\nnq <- length(out$quantiles)\npdmt0 <- apply(out$individual_sf > 0, 2, sum)\nprint(paste0('In ',sum(pdmt0 == nq),' participants (',round(100 * sum(pdmt0 == nq) / np, digits = 1),'%), all quantile differences are more than to zero'))\n\n[1] \"In 0 participants (0%), all quantile differences are more than to zero\"\n\n\nParticipants with all quantile differences < 0\n\npdlt0 <- apply(out$individual_sf < 0, 2, sum)\nprint(paste0('In ',sum(pdlt0 == nq),' participants (',round(100 * sum(pdlt0 == nq) / np, digits = 1),'%), all quantile differences are less than to zero'))\n\n[1] \"In 22 participants (73.3%), all quantile differences are less than to zero\"\n\n\n\n\n\n\n\n\n🏠 Neurowissenschaft im Computerlab FS22"
+    "text": "Hierarchical Shift Function\n\n\n\n\nShift functionPlot shift functionStochastic dominance\n\n\n\n\nout <- hsf(df, rt ~ cond + id)\n\n\n\n\n\n\np <- plot_hsf(out)\np\n\n\n\n\n\n\n\nParticipants with all quantile differences > 0\n\nnq <- length(out$quantiles)\npdmt0 <- apply(out$individual_sf > 0, 2, sum)\nprint(paste0('In ',sum(pdmt0 == nq),' participants (',round(100 * sum(pdmt0 == nq) / np, digits = 1),'%), all quantile differences are more than to zero'))\n\n[1] \"In 0 participants (0%), all quantile differences are more than to zero\"\n\n\nParticipants with all quantile differences < 0\n\npdlt0 <- apply(out$individual_sf < 0, 2, sum)\nprint(paste0('In ',sum(pdlt0 == nq),' participants (',round(100 * sum(pdlt0 == nq) / np, digits = 1),'%), all quantile differences are less than to zero'))\n\n[1] \"In 22 participants (73.3%), all quantile differences are less than to zero\""
+  },
+  {
+    "objectID": "slides/08_response_times_ii.html#hierarchical-shift-function-2",
+    "href": "slides/08_response_times_ii.html#hierarchical-shift-function-2",
+    "title": "8. Sitzung",
+    "section": "Hierarchical Shift Function",
+    "text": "Hierarchical Shift Function\nAlternative bootstrapping method: hsf_pb()\n\nset.seed(8899)\nout <- rogme::hsf_pb(df, rt ~ cond + id)\n\n\nrogme::plot_hsf_pb(out, interv = \"ci\")"
+  },
+  {
+    "objectID": "slides/08_response_times_ii.html#bootstrapping",
+    "href": "slides/08_response_times_ii.html#bootstrapping",
+    "title": "8. Sitzung",
+    "section": "Bootstrapping",
+    "text": "Bootstrapping\n\n“The bootstrap is a computer-based method for assigning measures of accuracy to statistical estimates.” Efron & Tibshirani, An introduction to the bootstrap, 1993\n\n\n“The central idea is that it may sometimes be better to draw conclusions about the characteristics of a population strictly from the sample at hand, rather than by making perhaps unrealistic assumptions about the population.” Mooney & Duval, Bootstrapping, 1993\n\n\nLike all bootstrap methods, the percentile bootstrap relies on a simple & intuitive idea: instead of making assumptions about the underlying distributions from which our observations could have been sampled, we use the data themselves to estimate sampling distributions.\nIn turn, we can use these estimated sampling distributions to compute confidence intervals, estimate standard errors, estimate bias, and test hypotheses (Efron & Tibshirani, 1993; Mooney & Duval, 1993; Wilcox, 2012).\nThe core principle to estimate sampling distributions is resampling. The technique was developed & popularised by Brad Efron as the bootstrap."
+  },
+  {
+    "objectID": "slides/08_response_times_ii.html#bootstrapping-1",
+    "href": "slides/08_response_times_ii.html#bootstrapping-1",
+    "title": "8. Sitzung",
+    "section": "Bootstrapping",
+    "text": "Bootstrapping\n\nheights <- c(183, 192, 182, 183, 177, 185, 188, 188, 182, 185)\n\n\nv1 <- sample(heights, replace = TRUE)\nv1\n\n [1] 188 183 188 183 182 177 188 188 188 192\n\n\n\nv2 <- sample(heights, replace = TRUE)\nv2\n\n [1] 192 183 185 185 177 185 185 185 182 192\n\n\nEssentially, we are doing fake experiments using only the observations from our sample. And for each of these fake experiments, or bootstrap sample, we can compute any estimate of interest, for instance the median.\nFor a visualization, see this demo."
+  },
+  {
+    "objectID": "slides/08_response_times_ii.html#bootstrapping-2",
+    "href": "slides/08_response_times_ii.html#bootstrapping-2",
+    "title": "8. Sitzung",
+    "section": "Bootstrapping",
+    "text": "Bootstrapping\n\nFunction to resample and compute meanRepeat N timesVisualize\n\n\n\nf <- function(v) {\n  vv <- sample(v, replace = TRUE)\n  mean(vv)\n}\n\n\n\n\nN <- 4000\n\n\nb1 <- replicate(n = N, f(heights))\n\n\nlibrary(purrr)\nb2 <- map_dbl(1:N, ~f(heights))\n\n\nd <- tibble(b1 = b1, b2 = b2) |> \n  pivot_longer(everything(), names_to = \"bootstrap\", values_to = \"mean\")\n\n\n\n\n\nd |> \n  ggplot(aes(mean, fill = bootstrap)) + \n  geom_histogram() +\n  facet_wrap(~bootstrap)"
+  },
+  {
+    "objectID": "slides/08_response_times_ii.html#bootstrapping-3",
+    "href": "slides/08_response_times_ii.html#bootstrapping-3",
+    "title": "8. Sitzung",
+    "section": "Bootstrapping",
+    "text": "Bootstrapping\nBootstrapped standard error of the mean:\n\nMethod 1Method 2\n\n\n\nd |> \n  group_by(bootstrap) |> \n  tidybayes::mean_qi()\n\n# A tibble: 2 × 7\n  bootstrap  mean .lower .upper .width .point .interval\n  <chr>     <dbl>  <dbl>  <dbl>  <dbl> <chr>  <chr>    \n1 b1         185.    182   187    0.95 mean   qi       \n2 b2         185.    182   187.   0.95 mean   qi       \n\n\n\n\n\nd |> \n  group_by(bootstrap) |> \n  summarize(estimate = mean(mean), \n            lower = quantile(mean, probs = 0.025),\n            upper = quantile(mean, probs = 0.975))\n\n# A tibble: 2 × 4\n  bootstrap estimate lower upper\n  <chr>        <dbl> <dbl> <dbl>\n1 b1            185.   182  187 \n2 b2            185.   182  187.\n\n\n\n\n\n\n\n\n🏠 Neurowissenschaft im Computerlab FS22"
   },
   {
     "objectID": "index.html",

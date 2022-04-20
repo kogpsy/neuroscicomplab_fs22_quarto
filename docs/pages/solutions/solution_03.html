@@ -345,8 +345,8 @@ $ trial_num      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
 <p>Konvertieren Sie die Gruppierungsvariablen zu Faktoren:</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="va">d</span> |&gt;
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>subject <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">subject</span><span class="op">)</span>,
-           condition <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">condition</span><span class="op">)</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate</a></span><span class="op">(</span>subject <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/forcats/man/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">subject</span><span class="op">)</span>,
+           condition <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/forcats/man/as_factor.html">as_factor</a></span><span class="op">(</span><span class="va">condition</span><span class="op">)</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="exercise">
 <p><strong>Aufgabe 2</strong></p>
@@ -355,30 +355,30 @@ $ trial_num      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="co"># summary stats (means) for subjects/conditions</span>
 <span class="va">sum_stats_participants</span> <span class="op">&lt;-</span> <span class="va">d</span> |&gt;
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">condition</span><span class="op">)</span> |&gt;
-    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">condition</span><span class="op">)</span> |&gt;
+    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise</a></span><span class="op">(</span>
         mean_P <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rt</span><span class="op">)</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="co"># summary stats (means and SDs) for conditions</span>
 <span class="va">sum_stats_conditions</span> <span class="op">&lt;-</span> <span class="va">d</span> |&gt;
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">condition</span><span class="op">)</span> |&gt;
-    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by</a></span><span class="op">(</span><span class="va">condition</span><span class="op">)</span> |&gt;
+    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise</a></span><span class="op">(</span>
         mean_C <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rt</span><span class="op">)</span>,
         sd_C <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">rt</span><span class="op">)</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">sum_stats_participants</span> <span class="op">&lt;-</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate-joins.html">full_join</a></span><span class="op">(</span>
         <span class="va">sum_stats_participants</span>,
         <span class="va">sum_stats_conditions</span>,
         by <span class="op">=</span> <span class="st">"condition"</span><span class="op">)</span> |&gt;
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>outlier_P <span class="op">=</span> <span class="op">(</span><span class="va">mean_P</span> <span class="op">-</span> <span class="va">mean_C</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">sd_C</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate</a></span><span class="op">(</span>outlier_P <span class="op">=</span> <span class="op">(</span><span class="va">mean_P</span> <span class="op">-</span> <span class="va">mean_C</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">sd_C</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="co"># show outlier participants</span>
 <span class="va">sum_stats_participants</span> |&gt;
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">outlier_P</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> |&gt;
+    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">outlier_P</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> |&gt;
     <span class="fu">show</span><span class="op">(</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 0 × 6
@@ -390,7 +390,7 @@ $ trial_num      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
 <p>Es gibt keine Versuchsperson, deren mittlere Reaktionszeit in einer Bedingung mehr als zwei Standardabweichungen <strong>über</strong> dem Bedingungsmittelwert liegt. Dies bedeutet, dass sich in <code>excluded</code> keine Personen befinden, und der Dataframe folglich <span class="math inline">\(0\)</span> Zeilen hat.</p>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">excluded</span> <span class="op">&lt;-</span> <span class="va">sum_stats_participants</span> |&gt;
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">outlier_P</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">outlier_P</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span>
 
 <span class="va">excluded</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -403,8 +403,8 @@ $ trial_num      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
 <p>Der nächste Schritt wäre also nicht unbedingt notwendig.</p>
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">d_cleaned</span> <span class="op">&lt;-</span> <span class="va">d</span> |&gt;
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">subject</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">excluded</span><span class="op">$</span><span class="va">subject</span><span class="op">)</span><span class="op">)</span> |&gt;
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>subject <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_drop.html">fct_drop</a></span><span class="op">(</span><span class="va">subject</span><span class="op">)</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">subject</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">excluded</span><span class="op">$</span><span class="va">subject</span><span class="op">)</span><span class="op">)</span> |&gt;
+    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate</a></span><span class="op">(</span>subject <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/forcats/man/fct_drop.html">fct_drop</a></span><span class="op">(</span><span class="va">subject</span><span class="op">)</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="exercise">
 <p><strong>Aufgabe 3</strong></p>
@@ -420,11 +420,11 @@ $ trial_num      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
 <p>Die Reaktionszeiten sind hier in Sekunden, nicht Millisekunden. Dies bedeutet, wir brauchen <code>rt &lt; 0.100</code>, und nicht <code>rt &lt; 100</code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">d_cleaned</span> <span class="op">&lt;-</span> <span class="va">d_cleaned</span> |&gt;
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate-joins.html">full_join</a></span><span class="op">(</span>
         <span class="va">sum_stats_conditions</span>,
         by <span class="op">=</span> <span class="st">"condition"</span><span class="op">)</span> |&gt;
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
-        trial_type <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate</a></span><span class="op">(</span>
+        trial_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/case_when.html">case_when</a></span><span class="op">(</span>
             <span class="op">(</span><span class="va">rt</span> <span class="op">-</span> <span class="va">mean_C</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">4</span> <span class="op">*</span> <span class="va">sd_C</span> <span class="op">~</span> <span class="st">"too slow"</span>,
             <span class="va">rt</span> <span class="op">&lt;</span> <span class="fl">0.100</span> <span class="op">~</span> <span class="st">"too fast"</span>,
             <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"OK"</span><span class="op">)</span> |&gt;
@@ -442,7 +442,7 @@ $ trial_num      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">d_cleaned</span> |&gt;
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">trial_type</span> <span class="op">!=</span> <span class="st">"OK"</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">trial_type</span> <span class="op">!=</span> <span class="st">"OK"</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 165 × 9
    subject condition signal_present correct     rt trial_num mean_C  sd_C
@@ -469,8 +469,8 @@ $ trial_num      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="va">d_cleaned</span> <span class="op">&lt;-</span> <span class="va">d_cleaned</span> |&gt;
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">trial_type</span> <span class="op">==</span> <span class="st">"OK"</span><span class="op">)</span> |&gt;
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">trial_num</span>, <span class="va">condition</span>, <span class="va">signal_present</span>, <span class="va">correct</span>, <span class="va">rt</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">trial_type</span> <span class="op">==</span> <span class="st">"OK"</span><span class="op">)</span> |&gt;
+    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/select.html">select</a></span><span class="op">(</span><span class="va">subject</span>, <span class="va">trial_num</span>, <span class="va">condition</span>, <span class="va">signal_present</span>, <span class="va">correct</span>, <span class="va">rt</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Nach dem Entfernen haben wir noch 5591.</p>
 <div class="cell">

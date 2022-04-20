@@ -564,9 +564,155 @@
 </div>
 </div>
 </div>
+</section>
+<section id="hierarchical-shift-function-2" class="slide level2">
+<h2>Hierarchical Shift Function</h2>
+<p>Alternative bootstrapping method: <code>hsf_pb()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">set.seed</span>(<span class="dv">8899</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>out <span class="ot">&lt;-</span> rogme<span class="sc">::</span><span class="fu">hsf_pb</span>(df, rt <span class="sc">~</span> cond <span class="sc">+</span> id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>rogme<span class="sc">::</span><span class="fu">plot_hsf_pb</span>(out, <span class="at">interv =</span> <span class="st">"ci"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<p><img src="../assets/logo.png" class="slide-logo"></p>
-<div class="footer footer-default">
+</div>
+<img data-src="08_response_times_ii_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column" style="width:35%;">
+<div class="topic-number">
+<p>4</p>
+</div>
+</div><div class="column" style="width:65%;">
+<div class="topic-text">
+<p>Bootstrapping</p>
+</div>
+</div>
+</div>
+</section>
+<section id="bootstrapping" class="slide level2 even-smaller">
+<h2>Bootstrapping</h2>
+<blockquote>
+<p>“The bootstrap is a computer-based method for assigning measures of accuracy to statistical estimates.” Efron &amp; Tibshirani, An introduction to the bootstrap, 1993</p>
+</blockquote>
+<blockquote>
+<p>“The central idea is that it may sometimes be better to draw conclusions about the characteristics of a population strictly from the sample at hand, rather than by making perhaps unrealistic assumptions about the population.” Mooney &amp; Duval, Bootstrapping, 1993</p>
+</blockquote>
+<ul>
+<li><p>Like all bootstrap methods, the percentile bootstrap relies on a simple &amp; intuitive idea: instead of making assumptions about the underlying distributions from which our observations could have been sampled, we use the data themselves to estimate sampling distributions.</p></li>
+<li><p>In turn, we can use these estimated sampling distributions to compute confidence intervals, estimate standard errors, estimate bias, and test hypotheses (Efron &amp; Tibshirani, 1993; Mooney &amp; Duval, 1993; Wilcox, 2012).</p></li>
+<li><p>The core principle to estimate sampling distributions is resampling. The technique was developed &amp; popularised by Brad Efron as the bootstrap.</p></li>
+</ul>
+</section>
+<section id="bootstrapping-1" class="slide level2">
+<h2>Bootstrapping</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>heights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">183</span>, <span class="dv">192</span>, <span class="dv">182</span>, <span class="dv">183</span>, <span class="dv">177</span>, <span class="dv">185</span>, <span class="dv">188</span>, <span class="dv">188</span>, <span class="dv">182</span>, <span class="dv">185</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(heights, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>v1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 188 183 188 183 182 177 188 188 188 192</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(heights, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a>v2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 192 183 185 185 177 185 185 185 182 192</code></pre>
+</div>
+</div>
+<p>Essentially, we are doing fake experiments using only the observations from our sample. And for each of these fake experiments, or bootstrap sample, we can compute any estimate of interest, for instance the median.</p>
+<p>For a visualization, see this <a href="https://seeing-theory.brown.edu/frequentist-inference/index.html#section2">demo</a>.</p>
+</section>
+<section id="bootstrapping-2" class="slide level2">
+<h2>Bootstrapping</h2>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Function to resample and compute mean</a></li><li><a href="#tabset-3-2">Repeat N times</a></li><li><a href="#tabset-3-3">Visualize</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(v) {</span>
+<span id="cb15-2"><a href="#cb15-2"></a>  vv <span class="ot">&lt;-</span> <span class="fu">sample</span>(v, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">mean</span>(vv)</span>
+<span id="cb15-4"><a href="#cb15-4"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-3-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>N <span class="ot">&lt;-</span> <span class="dv">4000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>b1 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="at">n =</span> N, <span class="fu">f</span>(heights))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>b2 <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span>N, <span class="sc">~</span><span class="fu">f</span>(heights))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>d <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">b1 =</span> b1, <span class="at">b2 =</span> b2) <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"bootstrap"</span>, <span class="at">values_to =</span> <span class="st">"mean"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-3-3">
+<div class="width-80">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>d <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(mean, <span class="at">fill =</span> bootstrap)) <span class="sc">+</span> </span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>bootstrap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="08_response_times_ii_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="bootstrapping-3" class="slide level2">
+<h2>Bootstrapping</h2>
+<p>Bootstrapped standard error of the mean:</p>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Method 1</a></li><li><a href="#tabset-4-2">Method 2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>d <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">group_by</span>(bootstrap) <span class="sc">|&gt;</span> </span>
+<span id="cb21-3"><a href="#cb21-3"></a>  tidybayes<span class="sc">::</span><span class="fu">mean_qi</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+  bootstrap  mean .lower .upper .width .point .interval
+  &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    
+1 b1         185.    182   187    0.95 mean   qi       
+2 b2         185.    182   187.   0.95 mean   qi       </code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-4-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>d <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">group_by</span>(bootstrap) <span class="sc">|&gt;</span> </span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">summarize</span>(<span class="at">estimate =</span> <span class="fu">mean</span>(mean), </span>
+<span id="cb23-4"><a href="#cb23-4"></a>            <span class="at">lower =</span> <span class="fu">quantile</span>(mean, <span class="at">probs =</span> <span class="fl">0.025</span>),</span>
+<span id="cb23-5"><a href="#cb23-5"></a>            <span class="at">upper =</span> <span class="fu">quantile</span>(mean, <span class="at">probs =</span> <span class="fl">0.975</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  bootstrap estimate lower upper
+  &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 b1            185.   182  187 
+2 b2            185.   182  187.</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<img src="../assets/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="../">🏠 Neurowissenschaft im Computerlab FS22</a></p>
 </div>
 </section>
